@@ -1,0 +1,941 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "MLOps Project Management API",
+    "version": "2.3.0",
+    "description": "API for managing SageMaker MLOps projects, CI/CD pipelines, Feature Store, Model Registry, Model Approval, Staging Deployment Approval, and MLflow"
+  },
+  "paths": {
+    "/configure-code-connection": {
+      "post": {
+        "summary": "Set up AWS CodeStar connection for GitHub integration",
+        "description": "Creates a CodeStar connection to enable GitHub integration with AWS services",
+        "operationId": "configureCodeConnection",
+        "parameters": [
+          {
+            "name": "connection_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Name for the CodeStar connection"
+          },
+          {
+            "name": "provider_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "GitHub"
+            },
+            "description": "Source code provider type (GitHub, GitLab, etc.)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Connection configured successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"},
+                    "connection_arn": {"type": "string"},
+                    "connection_status": {"type": "string"},
+                    "next_steps": {"type": "string"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/create-mlops-project": {
+      "post": {
+        "summary": "Create a new SageMaker MLOps project with GitHub integration",
+        "description": "Creates a SageMaker project using MLOps template with GitHub repository integration for CI/CD pipelines",
+        "operationId": "createMLOpsProject",
+        "parameters": [
+          {
+            "name": "project_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Name of the MLOps project to create"
+          },
+          {
+            "name": "github_username",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "GitHub username or organization name"
+          },
+          {
+            "name": "github_repo_build",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "GitHub repository for model building pipeline"
+          },
+          {
+            "name": "github_repo_deploy",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "GitHub repository for model deployment pipeline"
+          },
+          {
+            "name": "connection_arn",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ARN of the CodeStar connection for GitHub integration"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Project created successfully"
+          }
+        }
+      }
+    },
+    "/build-cicd-pipeline": {
+      "post": {
+        "summary": "Build CI/CD pipeline using seed code from GitHub",
+        "description": "Creates a complete CI/CD pipeline for ML model building and deployment using seed code from GitHub repositories. Clones seed files, configures buildspec, updates pipeline parameters, starts execution, and checks model approval status.",
+        "operationId": "buildCicdPipeline",
+        "parameters": [
+          {
+            "name": "project_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Name of the existing SageMaker project"
+          },
+          {
+            "name": "model_build_code_repository_full_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "GitHub repository for model building (format: username/repo-name)"
+          },
+          {
+            "name": "code_connection_arn",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ARN of the CodeStar connection for GitHub access"
+          },
+          {
+            "name": "feature_group_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Name of the SageMaker Feature Store group"
+          },
+          {
+            "name": "bucket_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "S3 bucket name for storing artifacts"
+          },
+          {
+            "name": "mlflow_tracking_server_arn",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ARN of the MLflow tracking server"
+          },
+          {
+            "name": "pipeline_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Name of the SageMaker pipeline to execute"
+          },
+          {
+            "name": "region",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "us-east-1"
+            },
+            "description": "AWS region"
+          },
+          {
+            "name": "bucket_prefix",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "player-churn/xgboost"
+            },
+            "description": "S3 bucket prefix for storing artifacts"
+          },
+          {
+            "name": "experiment_name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "player-churn-model-build-pipeline"
+            },
+            "description": "MLflow experiment name"
+          },
+          {
+            "name": "train_instance_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "ml.m5.xlarge"
+            },
+            "description": "EC2 instance type for training"
+          },
+          {
+            "name": "test_score_threshold",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 0.75
+            },
+            "description": "Minimum test score threshold for model approval"
+          },
+          {
+            "name": "model_approval_status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["PendingManualApproval", "Approved", "Rejected"],
+              "default": "PendingManualApproval"
+            },
+            "description": "Default model approval status when registered"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "CI/CD pipeline built successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"},
+                    "pipeline_execution_arn": {"type": "string"},
+                    "pipeline_status": {"type": "string"},
+                    "project_details": {
+                      "type": "object",
+                      "properties": {
+                        "project_name": {"type": "string"},
+                        "project_id": {"type": "string"},
+                        "project_arn": {"type": "string"},
+                        "model_package_group_name": {"type": "string"}
+                      }
+                    },
+                    "model_approval_status": {
+                      "type": "object",
+                      "properties": {
+                        "total_models": {"type": "integer"},
+                        "approved_models": {"type": "integer"},
+                        "pending_models": {"type": "integer"},
+                        "deployment_ready": {"type": "boolean"},
+                        "requires_approval": {"type": "boolean"}
+                      }
+                    },
+                    "git_operations": {
+                      "type": "object",
+                      "properties": {
+                        "repository_downloaded": {"type": "boolean"},
+                        "files_processed": {"type": "boolean"},
+                        "buildspec_generated": {"type": "boolean"},
+                        "method": {"type": "string"}
+                      }
+                    },
+                    "execution_summary": {
+                      "type": "object",
+                      "properties": {
+                        "pipeline_name": {"type": "string"},
+                        "execution_id": {"type": "string"},
+                        "final_status": {"type": "string"},
+                        "monitoring_timeout": {"type": "boolean"}
+                      }
+                    },
+                    "next_steps": {
+                      "type": "array",
+                      "items": {"type": "string"}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing required parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {"type": "string"},
+                    "missing_parameters": {
+                      "type": "array",
+                      "items": {"type": "string"}
+                    },
+                    "provided_parameters": {
+                      "type": "array",
+                      "items": {"type": "string"}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {"type": "string"},
+                    "message": {"type": "string"},
+                    "phase": {"type": "string"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/manage-model-approval": {
+      "post": {
+        "summary": "Manage model package approval in SageMaker Model Registry",
+        "description": "List, approve, or reject model packages in the Model Registry. Helps manage the MLOps approval workflow by providing visibility into pending models and enabling approval/rejection actions.",
+        "operationId": "manageModelApproval",
+        "parameters": [
+          {
+            "name": "model_package_group_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Name of the model package group to manage"
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["list", "approve", "reject"],
+              "default": "list"
+            },
+            "description": "Action to perform: list (show all models), approve (approve a model), or reject (reject a model)"
+          },
+          {
+            "name": "model_package_arn",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ARN of the specific model package (required for approve/reject actions)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Model approval action completed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"},
+                    "model_package_group_name": {"type": "string"},
+                    "summary": {
+                      "type": "object",
+                      "properties": {
+                        "total_models": {"type": "integer"},
+                        "approved_count": {"type": "integer"},
+                        "pending_count": {"type": "integer"},
+                        "rejected_count": {"type": "integer"}
+                      }
+                    },
+                    "approved_models": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "model_package_arn": {"type": "string"},
+                          "model_package_version": {"type": "string"},
+                          "creation_time": {"type": "string"},
+                          "approval_status": {"type": "string"}
+                        }
+                      }
+                    },
+                    "pending_models": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "model_package_arn": {"type": "string"},
+                          "model_package_version": {"type": "string"},
+                          "creation_time": {"type": "string"},
+                          "approval_status": {"type": "string"}
+                        }
+                      }
+                    },
+                    "rejected_models": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "model_package_arn": {"type": "string"},
+                          "model_package_version": {"type": "string"},
+                          "creation_time": {"type": "string"},
+                          "approval_status": {"type": "string"}
+                        }
+                      }
+                    },
+                    "next_steps": {
+                      "type": "array",
+                      "items": {"type": "string"}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - missing parameters or invalid action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {"type": "string"},
+                    "message": {"type": "string"},
+                    "supported_actions": {
+                      "type": "array",
+                      "items": {"type": "string"}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Model package group not found or no models exist",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"},
+                    "model_package_group_name": {"type": "string"},
+                    "suggestion": {"type": "string"}
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {"type": "string"},
+                    "message": {"type": "string"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/manage-staging-approval": {
+  "post": {
+    "summary": "APPROVE CODEPIPELINE DEPLOYMENT - Approve staging to production",
+    "description": "CODEPIPELINE DEPLOYMENT APPROVAL ONLY - This endpoint specifically handles CodePipeline manual approval steps for deploying from staging to production. Use this to approve or reject production deployments, NOT for model registry approval.",
+    "operationId": "approveStagingDeployment",
+        "parameters": [
+          {
+            "name": "project_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Name of the MLOps project"
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["list", "approve", "reject"],
+              "default": "list"
+            },
+            "description": "Action: list (show endpoints), approve (promote to prod), reject (block prod deployment)"
+          },
+          {
+            "name": "endpoint_name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Name of the staging endpoint (required for approve/reject actions)"
+          },
+          {
+            "name": "region",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "us-west-2"
+            },
+            "description": "AWS region"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Staging approval action completed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"},
+                    "project_name": {"type": "string"},
+                    "project_id": {"type": "string"},
+                    "summary": {
+                      "type": "object",
+                      "properties": {
+                        "total_endpoints": {"type": "integer"},
+                        "staging_endpoints": {"type": "integer"},
+                        "production_endpoints": {"type": "integer"},
+                        "other_endpoints": {"type": "integer"},
+                        "pending_deployments": {"type": "integer"}
+                      }
+                    },
+                    "staging_endpoints": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "endpoint_name": {"type": "string"},
+                          "endpoint_status": {"type": "string"},
+                          "creation_time": {"type": "string"},
+                          "last_modified_time": {"type": "string"},
+                          "endpoint_arn": {"type": "string"},
+                          "instance_type": {"type": "string"},
+                          "variant_name": {"type": "string"}
+                        }
+                      }
+                    },
+                    "production_endpoints": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "endpoint_name": {"type": "string"},
+                          "endpoint_status": {"type": "string"},
+                          "creation_time": {"type": "string"},
+                          "last_modified_time": {"type": "string"},
+                          "endpoint_arn": {"type": "string"},
+                          "instance_type": {"type": "string"},
+                          "variant_name": {"type": "string"}
+                        }
+                      }
+                    },
+                    "other_endpoints": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "endpoint_name": {"type": "string"},
+                          "endpoint_status": {"type": "string"},
+                          "creation_time": {"type": "string"},
+                          "last_modified_time": {"type": "string"},
+                          "endpoint_arn": {"type": "string"},
+                          "instance_type": {"type": "string"},
+                          "variant_name": {"type": "string"}
+                        }
+                      }
+                    },
+                    "pending_deployments": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "pipeline_name": {"type": "string"},
+                          "execution_id": {"type": "string"},
+                          "status": {"type": "string"},
+                          "start_time": {"type": "string"}
+                        }
+                      }
+                    },
+                    "deployment_workflow": {
+                      "type": "object",
+                      "properties": {
+                        "current_stage": {"type": "string"},
+                        "can_promote_to_prod": {"type": "boolean"},
+                        "production_ready": {"type": "boolean"}
+                      }
+                    },
+                    "deploy_pipeline_name": {"type": "string"},
+                    "execution_id": {"type": "string"},
+                    "action": {"type": "string"},
+                    "next_steps": {
+                      "type": "array",
+                      "items": {"type": "string"}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - missing parameters or invalid action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {"type": "string"},
+                    "message": {"type": "string"},
+                    "supported_actions": {
+                      "type": "array",
+                      "items": {"type": "string"}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Project or endpoints not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {"type": "string"},
+                    "message": {"type": "string"},
+                    "suggestion": {"type": "string"}
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {"type": "string"},
+                    "message": {"type": "string"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/manage-project-lifecycle": {
+      "post": {
+        "summary": "Handle project updates and lifecycle management",
+        "description": "Manage existing SageMaker projects - describe, update, delete, or check MLflow status",
+        "operationId": "manageProjectLifecycle",
+        "parameters": [
+          {
+            "name": "project_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Name of the project to manage"
+          },
+          {
+            "name": "action",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": ["describe", "update", "delete", "check_mlflow_status"]
+            },
+            "description": "Action to perform: describe, update, delete, or check_mlflow_status"
+          },
+          {
+            "name": "tracking_server_name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Name of MLflow tracking server (required for check_mlflow_status action)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Project lifecycle action completed successfully"
+          }
+        }
+      }
+    },
+    "/list-mlops-templates": {
+      "post": {
+        "summary": "List available MLOps Service Catalog templates",
+        "description": "Retrieves available SageMaker MLOps templates from Service Catalog",
+        "operationId": "listMLOpsTemplates",
+        "responses": {
+          "200": {
+            "description": "Templates listed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"},
+                    "templates": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "ProductId": {"type": "string"},
+                          "Name": {"type": "string"},
+                          "ShortDescription": {"type": "string"}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/create-feature-store-group": {
+      "post": {
+        "summary": "Create SageMaker Feature Store Feature Group",
+        "description": "Creates a Feature Group with online store for real-time ML feature serving with natural language feature parsing",
+        "operationId": "createFeatureStoreGroup",
+        "parameters": [
+          {
+            "name": "feature_group_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Name of the Feature Group to create"
+          },
+          {
+            "name": "feature_description",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Natural language description of features (e.g., 'player_id as string identifier, player_lifetime as number, player_churn as integer, time_of_day features as floats, cohort_id features as binary flags, event_time as event time feature')"
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Description of the Feature Group"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Feature Group created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"},
+                    "feature_group_name": {"type": "string"},
+                    "feature_group_arn": {"type": "string"},
+                    "feature_count": {"type": "integer"},
+                    "features_parsed": {"type": "array"},
+                    "store_type": {"type": "string"},
+                    "status": {"type": "string"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/create-model-group": {
+      "post": {
+        "summary": "Create SageMaker Model Package Group",
+        "description": "Creates a Model Package Group in SageMaker Model Registry for model versioning",
+        "operationId": "createModelGroup",
+        "parameters": [
+          {
+            "name": "model_package_group_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Name of the Model Package Group to create"
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Description of the Model Package Group"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Model Package Group created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"},
+                    "model_package_group_name": {"type": "string"},
+                                        "model_package_group_arn": {"type": "string"},
+                    "status": {"type": "string"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/create-mlflow-server": {
+      "post": {
+        "summary": "Create SageMaker MLflow Tracking Server",
+        "description": "Creates an MLflow Tracking Server for experiment tracking (20-30 minute async operation)",
+        "operationId": "createMLflowServer",
+        "parameters": [
+          {
+            "name": "tracking_server_name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Name of the MLflow Tracking Server to create"
+          },
+          {
+            "name": "artifact_store_uri",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "S3 URI for MLflow artifact storage (e.g., s3://bucket/path/)"
+          },
+          {
+            "name": "tracking_server_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["Small", "Medium", "Large"],
+              "default": "Small"
+            },
+            "description": "Size of the MLflow Tracking Server"
+          },
+          {
+            "name": "role_arn",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "IAM Role ARN for MLflow server (auto-detected if not provided)"
+          },
+          {
+            "name": "mlflow_version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["3.0", "2.16", "2.13"]
+            },
+            "description": "MLflow version (optional - AWS will choose default if not specified). Current supported: 3.0 (latest), 2.16, 2.13"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "MLflow Tracking Server creation initiated (async operation)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {"type": "string"},
+                    "tracking_server_name": {"type": "string"},
+                    "tracking_server_arn": {"type": "string"},
+                    "status": {"type": "string"},
+                    "estimated_completion_time": {"type": "string"},
+                    "async_operation": {"type": "boolean"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

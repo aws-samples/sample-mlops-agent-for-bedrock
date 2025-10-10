@@ -1,0 +1,37 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "BedrockModelAccess",
+			"Effect": "Allow",
+			"Action": [
+				"bedrock:InvokeModel",
+				"bedrock:InvokeModelWithResponseStream"
+			],
+			"Resource": [
+				"arn:aws:bedrock:*::foundation-model/*"
+			]
+		},
+		{
+			"Sid": "LambdaInvokeAccess",
+			"Effect": "Allow",
+			"Action": [
+				"lambda:InvokeFunction"
+			],
+			"Resource": [
+				"arn:aws:lambda:us-west-2:ACCOUNT_ID:function:mlops-project-management",
+				"arn:aws:lambda:*:ACCOUNT_ID:function:bedrock-agent-*"
+			]
+		},
+		{
+			"Sid": "CloudWatchLogs",
+			"Effect": "Allow",
+			"Action": [
+				"logs:CreateLogGroup",
+				"logs:CreateLogStream",
+				"logs:PutLogEvents"
+			],
+			"Resource": "arn:aws:logs:*:ACCOUNT_ID:log-group:/aws/bedrock/agent/*"
+		}
+	]
+}

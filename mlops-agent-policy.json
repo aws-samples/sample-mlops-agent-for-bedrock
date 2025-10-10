@@ -1,0 +1,195 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "SageMakerProjectOperations",
+      "Effect": "Allow",
+      "Action": [
+        "sagemaker:CreateProject",
+        "sagemaker:DescribeProject",
+        "sagemaker:UpdateProject",
+        "sagemaker:DeleteProject",
+        "sagemaker:ListProjects",
+        "sagemaker:CreatePipeline",
+        "sagemaker:DescribePipeline",
+        "sagemaker:StartPipelineExecution",
+        "sagemaker:DescribePipelineExecution",
+        "sagemaker:ListPipelineExecutions",
+        "sagemaker:StopPipelineExecution",
+        "sagemaker:CreateModelPackageGroup",
+        "sagemaker:DescribeModelPackageGroup",
+        "sagemaker:ListModelPackageGroups",
+        "sagemaker:CreateModelPackage",
+        "sagemaker:DescribeModelPackage",
+        "sagemaker:ListModelPackages",
+        "sagemaker:UpdateModelPackage"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "SageMakerMLflowOperations",
+      "Effect": "Allow",
+      "Action": [
+        "sagemaker-mlflow:*",
+        "sagemaker:CreateMlflowTrackingServer",
+        "sagemaker:ListMlflowTrackingServers",
+        "sagemaker:UpdateMlflowTrackingServer",
+        "sagemaker:DeleteMlflowTrackingServer",
+        "sagemaker:StartMlflowTrackingServer",
+        "sagemaker:StopMlflowTrackingServer",
+        "sagemaker:CreatePresignedMlflowTrackingServerUrl"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "BedrockAgentOperations",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:InvokeModelWithResponseStream",
+        "bedrock:RetrieveAndGenerate",
+        "bedrock:Retrieve",
+        "bedrock:GetAgent",
+        "bedrock:GetAgentActionGroup",
+        "bedrock:InvokeAgent"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "CodeConnectionsOperations",
+      "Effect": "Allow",
+      "Action": [
+        "codeconnections:CreateConnection",
+        "codeconnections:GetConnection",
+        "codeconnections:ListConnections",
+        "codeconnections:UpdateConnection",
+        "codeconnections:DeleteConnection",
+        "codestar-connections:CreateConnection",
+        "codestar-connections:GetConnection",
+        "codestar-connections:ListConnections",
+        "codestar-connections:UpdateConnection",
+        "codestar-connections:DeleteConnection"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "CodePipelineOperations",
+      "Effect": "Allow",
+      "Action": [
+        "codepipeline:CreatePipeline",
+        "codepipeline:GetPipeline",
+        "codepipeline:UpdatePipeline",
+        "codepipeline:DeletePipeline",
+        "codepipeline:StartPipelineExecution",
+        "codepipeline:GetPipelineExecution",
+        "codepipeline:StopPipelineExecution",
+        "codepipeline:ListPipelines",
+        "codepipeline:ListPipelineExecutions"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "CodeBuildOperations",
+      "Effect": "Allow",
+      "Action": [
+        "codebuild:CreateProject",
+        "codebuild:BatchGetProjects",
+        "codebuild:UpdateProject",
+        "codebuild:DeleteProject",
+        "codebuild:StartBuild",
+        "codebuild:BatchGetBuilds",
+        "codebuild:StopBuild",
+        "codebuild:ListProjects",
+        "codebuild:ListBuilds"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "ServiceCatalogOperations",
+      "Effect": "Allow",
+      "Action": [
+        "servicecatalog:ListProducts",
+        "servicecatalog:DescribeProduct",
+        "servicecatalog:SearchProducts",
+        "servicecatalog:ProvisionProduct",
+        "servicecatalog:DescribeProvisionedProduct",
+        "servicecatalog:UpdateProvisionedProduct",
+        "servicecatalog:TerminateProvisionedProduct",
+        "servicecatalog:ListProvisionedProducts",
+        "servicecatalog:ScanProvisionedProducts"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "CloudFormationOperations",
+      "Effect": "Allow",
+      "Action": [
+        "cloudformation:CreateStack",
+        "cloudformation:DescribeStacks",
+        "cloudformation:UpdateStack",
+        "cloudformation:DeleteStack",
+        "cloudformation:DescribeStackResources",
+        "cloudformation:DescribeStackEvents",
+        "cloudformation:GetTemplate",
+        "cloudformation:ListStacks",
+        "cloudformation:ValidateTemplate"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "LambdaOperations",
+      "Effect": "Allow",
+      "Action": [
+        "lambda:InvokeFunction",
+        "lambda:GetFunction",
+        "lambda:CreateFunction",
+        "lambda:UpdateFunctionCode",
+        "lambda:UpdateFunctionConfiguration",
+        "lambda:DeleteFunction",
+        "lambda:ListFunctions"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "S3Operations",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject",
+        "s3:ListBucket",
+        "s3:GetBucketLocation",
+        "s3:CreateBucket",
+        "s3:DeleteBucket",
+        "s3:GetBucketVersioning",
+        "s3:PutBucketVersioning"
+      ],
+      "Resource": [
+        "arn:aws:s3:::sagemaker-*",
+        "arn:aws:s3:::sagemaker-*/*",
+        "arn:aws:s3:::mlflow-*",
+        "arn:aws:s3:::mlflow-*/*",
+        "arn:aws:s3:::codepipeline-*",
+        "arn:aws:s3:::codepipeline-*/*",
+        "arn:aws:s3:::aws-mlops-*",
+        "arn:aws:s3:::aws-mlops-*/*"
+      ]
+    },
+    {
+      "Sid": "IAMOperations",
+      "Effect": "Allow",
+      "Action": [
+        "iam:PassRole",
+        "iam:GetRole",
+        "iam:ListRoles"
+      ],
+      "Resource": [
+        "arn:aws:iam::*:role/service-role/AmazonSageMaker*",
+        "arn:aws:iam::*:role/MLOps*",
+        "arn:aws:iam::*:role/SageMaker*",
+        "arn:aws:iam::*:role/CodePipeline*",
+        "arn:aws:iam::*:role/CodeBuild*"
+      ]
+    }
+  ]
+}

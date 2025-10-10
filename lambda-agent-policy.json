@@ -1,0 +1,117 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "SageMakerOperations",
+			"Effect": "Allow",
+			"Action": [
+				    "sagemaker:CreateProject",
+                    "sagemaker:DescribeProject",
+                    "sagemaker:DeleteProject",
+                    "sagemaker:CreateFeatureGroup",
+                    "sagemaker:CreateModelPackageGroup",
+                    "sagemaker:DescribeModelPackageGroup",
+                    "sagemaker:CreateMlflowTrackingServer",
+                    "sagemaker:DescribeMlflowTrackingServer",
+                    "sagemaker:ListModelPackages",
+                    "sagemaker:DescribePipeline",
+                    "sagemaker:UpdatePipeline",
+                    "sagemaker:StartPipelineExecution",
+                    "sagemaker:DescribePipelineExecution",
+                    "sagemaker:AddTags",
+					"sagemaker:GetSagemakerServicecatalogPortfolioStatus",
+        			"sagemaker:EnableSagemakerServicecatalogPortfolio"
+
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "CodeServicesOperations",
+			"Effect": "Allow",
+			"Action": [
+				"codestar:*",
+				"codestar-connections:*",
+				"codeconnections:*",
+				"codebuild:*",
+				"codepipeline:*"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "ServiceCatalogOperations",
+			"Effect": "Allow",
+			"Action": [
+				"servicecatalog:ListProvisioningArtifacts"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "S3Access",
+			"Effect": "Allow",
+			"Action": [
+				"s3:GetObject",
+				"s3:PutObject",
+				"s3:DeleteObject",
+				"s3:ListBucket",
+				"s3:CreateBucket",
+				"s3:GetBucketLocation"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "IAMPassRole",
+			"Effect": "Allow",
+			"Action": [
+				"iam:PassRole",
+				"iam:GetRole",
+				"iam:ListRoles"
+			],
+			"Resource": "*",
+			"Condition": {
+				"StringEquals": {
+					"iam:PassedToService": [
+						"sagemaker.amazonaws.com",
+						"codebuild.amazonaws.com",
+						"codepipeline.amazonaws.com"
+					]
+				}
+			}
+		},
+		{
+			"Sid": "CloudWatchMetrics",
+			"Effect": "Allow",
+			"Action": [
+				"cloudwatch:PutMetricData",
+				"cloudwatch:GetMetricStatistics",
+				"cloudwatch:ListMetrics"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "EventBridgeAccess",
+			"Effect": "Allow",
+			"Action": [
+				"events:PutEvents"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "STSAccess",
+			"Effect": "Allow",
+			"Action": [
+				"sts:GetCallerIdentity"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "CloudWatchLogsAccess",
+			"Effect": "Allow",
+			"Action": [
+				"logs:CreateLogGroup",
+				"logs:CreateLogStream",
+				"logs:PutLogEvents"
+			],
+			"Resource": "*"
+		}
+	]
+}

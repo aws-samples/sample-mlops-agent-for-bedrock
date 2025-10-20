@@ -113,14 +113,22 @@ count_tagged_resources() {
     local functions=$(aws resourcegroupstaggingapi get-resources --tag-filters Key=$PROJECT_TAG_KEY,Values=$PROJECT_TAG_VALUE --resource-type-filters "lambda:function" --query 'ResourceTagMappingList[].ResourceARN' --output text 2>/dev/null | wc -w)
     local buckets=$(aws resourcegroupstaggingapi get-resources --tag-filters Key=$PROJECT_TAG_KEY,Values=$PROJECT_TAG_VALUE --resource-type-filters "s3:bucket" --query 'ResourceTagMappingList[].ResourceARN' --output text 2>/dev/null | wc -w)
     local agents=$(aws resourcegroupstaggingapi get-resources --tag-filters Key=$PROJECT_TAG_KEY,Values=$PROJECT_TAG_VALUE --resource-type-filters "bedrock:agent" --query 'ResourceTagMappingList[].ResourceARN' --output text 2>/dev/null | wc -w)
+    local pipelines=$(aws resourcegroupstaggingapi get-resources --tag-filters Key=$PROJECT_TAG_KEY,Values=$PROJECT_TAG_VALUE --resource-type-filters "codepipeline:pipeline" --query 'ResourceTagMappingList[].ResourceARN' --output text 2>/dev/null | wc -w)
+    local connections=$(aws resourcegroupstaggingapi get-resources --tag-filters Key=$PROJECT_TAG_KEY,Values=$PROJECT_TAG_VALUE --resource-type-filters "codestar-connections:connection" --query 'ResourceTagMappingList[].ResourceARN' --output text 2>/dev/null | wc -w)
     
-    total_count=$((projects + functions + buckets + agents))
+    # Count all SageMaker resources
+    local sagemaker_all=$(aws resourcegroupstaggingapi get-resources --tag-filters Key=$PROJECT_TAG_KEY,Values=$PROJECT_TAG_VALUE --resource-type-filters "sagemaker" --query 'ResourceTagMappingList[].ResourceARN' --output text 2>/dev/null | wc -w)
+    
+    total_count=$((sagemaker_all + functions + buckets + agents + pipelines + connections))
     
     echo "Resources found with tag $PROJECT_TAG_KEY=$PROJECT_TAG_VALUE:"
-    echo "  • SageMaker Projects: $projects"
+    echo "  • SageMaker Resources (all): $sagemaker_all"
+    echo "    - Projects: $projects"
     echo "  • Lambda Functions: $functions"
     echo "  • S3 Buckets: $buckets"
     echo "  • Bedrock Agents: $agents"
+    echo "  • CodePipeline Pipelines: $pipelines"
+    echo "  • CodeStar Connections: $connections"
     echo "  • Total: $total_count"
     echo ""
     
@@ -128,8 +136,6 @@ count_tagged_resources() {
         print_warning "No tagged resources found. Nothing to clean up."
         exit 0
     fi
-    
-    return $total_count
 }
 
 # Function to confirm individual resource deletion
@@ -276,11 +282,38 @@ cleanup_mlflow_servers() {
     fi
 }
 
+# Function to cleanup CodePipeline pipelines
+cleanup_codepipeline_pipelines() {
+    print_step "5" "Cleaning up CodePipeline Pipelines"
+    
+    pipelines=$(aws codepipeline list-pipelines --query "pipelines[].name" --output text 2>/dev/null || echo "")
+    
+    if [[ -n "$pipelines" ]]; then
+        for pipeline in $pipelines; do
+            # Check if pipeline has our tags
+            tags=$(aws codepipeline list-tags-for-resource --resource-arn "arn:aws:codepipeline:$REGION:$ACCOUNT_ID:$pipeline" --query "tags[?key=='$PROJECT_TAG_KEY' && value=='$PROJECT_TAG_VALUE']" --output text 2>/dev/null || echo "")
+            
+            if [[ -n "$tags" ]]; then
+                if confirm_resource_deletion "$pipeline" "CodePipeline Pipeline"; then
+                    if [[ "$DRY_RUN" == "true" ]]; then
+                        echo "Would delete CodePipeline pipeline: $pipeline"
+                    else
+                        echo "Deleting CodePipeline pipeline: $pipeline"
+                        aws codepipeline delete-pipeline --name "$pipeline" 2>/dev/null || print_warning "Failed to delete pipeline $pipeline"
+                        print_success "Deleted CodePipeline pipeline: $pipeline"
+                    fi
+                else
+                    echo "Skipped CodePipeline pipeline: $pipeline"
+                fi
+            fi
+        done
+    else
+        print_warning "No CodePipeline pipelines found"
+    fi
+}
 # Function to cleanup CodeStar connections
 cleanup_codestar_connections() {
-    print_step "5" "Cleaning up CodeStar Connections"
-    
-    connections=$(aws codeconnections list-connections --query "Connections[].ConnectionArn" --output text 2>/dev/null || echo "")
+    print_step "6" "Cleaning up CodeStar Connections"
     
     if [[ -n "$connections" ]]; then
         for connection_arn in $connections; do
@@ -449,9 +482,39 @@ cleanup_sagemaker_models() {
     fi
 }
 
+# Function to cleanup SageMaker Endpoints
+cleanup_sagemaker_endpoints() {
+    print_step "12" "Cleaning up SageMaker Endpoints"
+    
+    endpoints=$(aws sagemaker list-endpoints --query "Endpoints[].EndpointName" --output text 2>/dev/null || echo "")
+    
+    if [[ -n "$endpoints" ]]; then
+        for endpoint in $endpoints; do
+            # Check if endpoint has our tags
+            tags=$(aws sagemaker list-tags --resource-arn "arn:aws:sagemaker:$REGION:$ACCOUNT_ID:endpoint/$endpoint" --query "Tags[?Key=='$PROJECT_TAG_KEY' && Value=='$PROJECT_TAG_VALUE']" --output text 2>/dev/null || echo "")
+            
+            if [[ -n "$tags" ]]; then
+                if confirm_resource_deletion "$endpoint" "SageMaker Endpoint"; then
+                    if [[ "$DRY_RUN" == "true" ]]; then
+                        echo "Would delete SageMaker endpoint: $endpoint"
+                    else
+                        echo "Deleting SageMaker endpoint: $endpoint"
+                        aws sagemaker delete-endpoint --endpoint-name "$endpoint" 2>/dev/null || print_warning "Failed to delete endpoint $endpoint"
+                        print_success "Deleted SageMaker endpoint: $endpoint"
+                    fi
+                else
+                    echo "Skipped SageMaker endpoint: $endpoint"
+                fi
+            fi
+        done
+    else
+        print_warning "No SageMaker endpoints found"
+    fi
+}
+
 # Function to cleanup SageMaker Endpoint Configurations
 cleanup_sagemaker_endpoint_configs() {
-    print_step "12" "Cleaning up SageMaker Endpoint Configurations"
+    print_step "13" "Cleaning up SageMaker Endpoint Configurations"
     
     configs=$(aws sagemaker list-endpoint-configs --query "EndpointConfigs[].EndpointConfigName" --output text 2>/dev/null || echo "")
     
@@ -473,7 +536,7 @@ cleanup_sagemaker_endpoint_configs() {
 
 # Function to cleanup ECR repositories
 cleanup_ecr_repositories() {
-    print_step "13" "Cleaning up ECR Repositories"
+    print_step "14" "Cleaning up ECR Repositories"
     
     repos=$(aws ecr describe-repositories --query "repositories[].repositoryName" --output text 2>/dev/null || echo "")
     
@@ -495,7 +558,7 @@ cleanup_ecr_repositories() {
 
 # Function to cleanup EventBridge rules
 cleanup_eventbridge_rules() {
-    print_step "14" "Cleaning up EventBridge Rules"
+    print_step "15" "Cleaning up EventBridge Rules"
     
     rules=$(aws events list-rules --query "Rules[].Name" --output text 2>/dev/null || echo "")
     
@@ -525,7 +588,7 @@ cleanup_eventbridge_rules() {
 
 # Function to cleanup SageMaker-created buckets
 cleanup_sagemaker_buckets() {
-    print_step "15" "Cleaning up SageMaker-Created Buckets"
+    print_step "16" "Cleaning up SageMaker-Created Buckets"
     
     sagemaker_buckets=$(aws s3 ls | grep sagemaker-project | awk '{print $3}' || echo "")
     
@@ -570,7 +633,9 @@ main() {
     cleanup_mlflow_servers
     cleanup_sagemaker_pipelines
     cleanup_sagemaker_models
+    cleanup_sagemaker_endpoints
     cleanup_sagemaker_endpoint_configs
+    cleanup_codepipeline_pipelines
     cleanup_codestar_connections
     cleanup_lambda_functions
     cleanup_s3_buckets

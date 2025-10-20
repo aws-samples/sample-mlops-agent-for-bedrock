@@ -24,6 +24,20 @@ def lambda_handler(event, context):
     """
     Main handler for MLOps project management actions
     """
+    # Tag the Lambda log group on first execution
+    try:
+        log_group_name = f"/aws/lambda/{context.function_name}"
+        logs_client = boto3.client('logs')
+        logs_client.tag_log_group(
+            logGroupName=log_group_name,
+            tags={
+                'CreatedBy': 'MLOpsAgent',
+                'Purpose': 'MLOpsLambda'
+            }
+        )
+    except Exception:
+        pass  # Ignore errors - log group might not exist yet or already tagged
+    
     logger.info("="*50)
     logger.info("BEDROCK AGENT EVENT DEBUG")
     logger.info("="*50)
@@ -1138,6 +1152,22 @@ def create_mlflow_server(params: Dict[str, Any]) -> Dict[str, Any]:
             
             tracking_server_arn = response['TrackingServerArn']
             logger.info(f"MLflow server creation initiated: {tracking_server_arn}")
+            
+            # Tag the CloudWatch log group that gets created
+            try:
+                log_group_name = f"/aws/sagemaker/mlflow/{tracking_server_name}"
+                logs_client = boto3.client('logs')
+                logs_client.put_retention_policy(logGroupName=log_group_name, retentionInDays=30)
+                logs_client.tag_log_group(
+                    logGroupName=log_group_name,
+                    tags={
+                        'CreatedBy': 'MLOpsAgent',
+                        'Purpose': 'MLflowTracking'
+                    }
+                )
+                logger.info(f"Tagged CloudWatch log group: {log_group_name}")
+            except Exception as log_error:
+                logger.warning(f"Failed to tag log group: {str(log_error)}")
             
             return {
                 'statusCode': 202,

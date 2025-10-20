@@ -109,21 +109,66 @@ count_tagged_resources() {
     local total_count=0
     
     # Count each resource type
-    local projects=$(aws resourcegroupstaggingapi get-resources --tag-filters Key=$PROJECT_TAG_KEY,Values=$PROJECT_TAG_VALUE --resource-type-filters "sagemaker:project" --query 'ResourceTagMappingList[].ResourceARN' --output text 2>/dev/null | wc -w)
+    local projects_count=0
+    local all_projects=$(aws sagemaker list-projects --query "ProjectSummaryList[].ProjectName" --output text 2>/dev/null || echo "")
+    if [[ -n "$all_projects" ]]; then
+        for project in $all_projects; do
+            local project_tags=$(aws sagemaker list-tags --resource-arn "arn:aws:sagemaker:$REGION:$ACCOUNT_ID:project/$project" --query "Tags[?Key=='$PROJECT_TAG_KEY' && Value=='$PROJECT_TAG_VALUE']" --output text 2>/dev/null || echo "")
+            [[ -n "$project_tags" ]] && ((projects_count++))
+        done
+    fi
     local functions=$(aws resourcegroupstaggingapi get-resources --tag-filters Key=$PROJECT_TAG_KEY,Values=$PROJECT_TAG_VALUE --resource-type-filters "lambda:function" --query 'ResourceTagMappingList[].ResourceARN' --output text 2>/dev/null | wc -w)
     local buckets=$(aws resourcegroupstaggingapi get-resources --tag-filters Key=$PROJECT_TAG_KEY,Values=$PROJECT_TAG_VALUE --resource-type-filters "s3:bucket" --query 'ResourceTagMappingList[].ResourceARN' --output text 2>/dev/null | wc -w)
     local agents=$(aws resourcegroupstaggingapi get-resources --tag-filters Key=$PROJECT_TAG_KEY,Values=$PROJECT_TAG_VALUE --resource-type-filters "bedrock:agent" --query 'ResourceTagMappingList[].ResourceARN' --output text 2>/dev/null | wc -w)
     local pipelines=$(aws resourcegroupstaggingapi get-resources --tag-filters Key=$PROJECT_TAG_KEY,Values=$PROJECT_TAG_VALUE --resource-type-filters "codepipeline:pipeline" --query 'ResourceTagMappingList[].ResourceARN' --output text 2>/dev/null | wc -w)
     local connections=$(aws resourcegroupstaggingapi get-resources --tag-filters Key=$PROJECT_TAG_KEY,Values=$PROJECT_TAG_VALUE --resource-type-filters "codestar-connections:connection" --query 'ResourceTagMappingList[].ResourceARN' --output text 2>/dev/null | wc -w)
     
-    # Count all SageMaker resources
-    local sagemaker_all=$(aws resourcegroupstaggingapi get-resources --tag-filters Key=$PROJECT_TAG_KEY,Values=$PROJECT_TAG_VALUE --resource-type-filters "sagemaker" --query 'ResourceTagMappingList[].ResourceARN' --output text 2>/dev/null | wc -w)
+    # Count all SageMaker resources individually for accuracy
+    local model_groups_count=0
+    local feature_groups_count=0
+    local mlflow_servers_count=0
+    local pipelines_count=0
+    local models_count=0
+    local endpoints_count=0
+    local endpoint_configs_count=0
+    
+    # Count model package groups
+    local all_model_groups=$(aws sagemaker list-model-package-groups --query "ModelPackageGroupSummaryList[].ModelPackageGroupName" --output text 2>/dev/null || echo "")
+    if [[ -n "$all_model_groups" ]]; then
+        for group in $all_model_groups; do
+            local group_tags=$(aws sagemaker list-tags --resource-arn "arn:aws:sagemaker:$REGION:$ACCOUNT_ID:model-package-group/$group" --query "Tags[?Key=='$PROJECT_TAG_KEY' && Value=='$PROJECT_TAG_VALUE']" --output text 2>/dev/null || echo "")
+            [[ -n "$group_tags" ]] && ((model_groups_count++))
+        done
+    fi
+    
+    # Count feature groups
+    local all_feature_groups=$(aws sagemaker list-feature-groups --query "FeatureGroupSummaries[].FeatureGroupName" --output text 2>/dev/null || echo "")
+    if [[ -n "$all_feature_groups" ]]; then
+        for group in $all_feature_groups; do
+            local group_tags=$(aws sagemaker list-tags --resource-arn "arn:aws:sagemaker:$REGION:$ACCOUNT_ID:feature-group/$group" --query "Tags[?Key=='$PROJECT_TAG_KEY' && Value=='$PROJECT_TAG_VALUE']" --output text 2>/dev/null || echo "")
+            [[ -n "$group_tags" ]] && ((feature_groups_count++))
+        done
+    fi
+    
+    # Count MLflow servers
+    local all_mlflow_servers=$(aws sagemaker list-mlflow-tracking-servers --query "TrackingServerSummaries[].TrackingServerName" --output text 2>/dev/null || echo "")
+    if [[ -n "$all_mlflow_servers" ]]; then
+        for server in $all_mlflow_servers; do
+            local server_tags=$(aws sagemaker list-tags --resource-arn "arn:aws:sagemaker:$REGION:$ACCOUNT_ID:mlflow-tracking-server/$server" --query "Tags[?Key=='$PROJECT_TAG_KEY' && Value=='$PROJECT_TAG_VALUE']" --output text 2>/dev/null || echo "")
+            [[ -n "$server_tags" ]] && ((mlflow_servers_count++))
+        done
+    fi
+    
+    local sagemaker_all=$((projects_count + model_groups_count + feature_groups_count + mlflow_servers_count + pipelines_count + models_count + endpoints_count + endpoint_configs_count))
     
     total_count=$((sagemaker_all + functions + buckets + agents + pipelines + connections))
     
     echo "Resources found with tag $PROJECT_TAG_KEY=$PROJECT_TAG_VALUE:"
     echo "  • SageMaker Resources (all): $sagemaker_all"
-    echo "    - Projects: $projects"
+    echo "    - Projects: $projects_count"
+    echo "    - Model Package Groups: $model_groups_count"
+    echo "    - Feature Groups: $feature_groups_count"
+    echo "    - MLflow Servers: $mlflow_servers_count"
     echo "  • Lambda Functions: $functions"
     echo "  • S3 Buckets: $buckets"
     echo "  • Bedrock Agents: $agents"
@@ -228,9 +273,31 @@ cleanup_model_package_groups() {
             tags=$(aws sagemaker list-tags --resource-arn "arn:aws:sagemaker:$REGION:$ACCOUNT_ID:model-package-group/$group" --query "Tags[?Key=='$PROJECT_TAG_KEY' && Value=='$PROJECT_TAG_VALUE']" --output text 2>/dev/null || echo "")
             
             if [[ -n "$tags" ]]; then
-                echo "Deleting model package group: $group"
-                aws sagemaker delete-model-package-group --model-package-group-name "$group" 2>/dev/null || print_warning "Failed to delete model package group $group"
-                print_success "Deleted model package group: $group"
+                if [[ "$DRY_RUN" == "true" ]]; then
+                    echo "Would delete model package group: $group"
+                else
+                    echo "Deleting model package group: $group"
+                    
+                    # First delete all model packages in the group
+                    model_packages=$(aws sagemaker list-model-packages --model-package-group-name "$group" --query "ModelPackageSummaryList[].ModelPackageArn" --output text 2>/dev/null || echo "")
+                    if [[ -n "$model_packages" ]]; then
+                        for package_arn in $model_packages; do
+                            echo "  Deleting model package: $package_arn"
+                            aws sagemaker delete-model-package --model-package-name "$package_arn" 2>/dev/null || print_warning "Failed to delete model package $package_arn"
+                        done
+                        
+                        # Wait for model packages to be deleted
+                        echo "  Waiting for model packages to be deleted..."
+                        sleep 10
+                    fi
+                    
+                    # Then delete the group
+                    if aws sagemaker delete-model-package-group --model-package-group-name "$group" 2>/dev/null; then
+                        print_success "Deleted model package group: $group"
+                    else
+                        print_warning "Failed to delete model package group $group"
+                    fi
+                fi
             fi
         done
     else
@@ -314,6 +381,8 @@ cleanup_codepipeline_pipelines() {
 # Function to cleanup CodeStar connections
 cleanup_codestar_connections() {
     print_step "6" "Cleaning up CodeStar Connections"
+    
+    connections=$(aws codeconnections list-connections --query "Connections[].ConnectionArn" --output text 2>/dev/null || echo "")
     
     if [[ -n "$connections" ]]; then
         for connection_arn in $connections; do

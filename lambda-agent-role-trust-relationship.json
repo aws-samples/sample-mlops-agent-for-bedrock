@@ -4,10 +4,7 @@
         {
             "Effect": "Allow",
             "Principal": {
-                "Service": [
-                    "sagemaker.amazonaws.com",
-                    "lambda.amazonaws.com"
-                ]
+                "Service": "lambda.amazonaws.com"
             },
             "Action": "sts:AssumeRole"
         }

@@ -113,8 +113,8 @@
     },
     "/build-cicd-pipeline": {
       "post": {
-        "summary": "Build CI/CD pipeline using seed code from GitHub",
-        "description": "Creates a complete CI/CD pipeline for ML model building and deployment using seed code from GitHub repositories. Clones seed files, configures buildspec, updates pipeline parameters, starts execution, and checks model approval status.",
+        "summary": "Build CI/CD pipeline, create CI/CD pipeline, set up pipeline, construct pipeline",
+        "description": "Creates, builds, sets up, or constructs a complete CI/CD pipeline for ML model building and deployment. Use this when user asks to 'build a CI/CD pipeline', 'create a pipeline', 'set up CI/CD', or similar natural language requests for pipeline creation.",
         "operationId": "buildCicdPipeline",
         "parameters": [
           {
@@ -124,7 +124,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "Name of the existing SageMaker project"
+            "description": "Name of the MLOps project, SageMaker project name, or project identifier"
           },
           {
             "name": "model_build_code_repository_full_name",
@@ -133,7 +133,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "GitHub repository for model building (format: username/repo-name)"
+            "description": "Build repository, model build repository, or GitHub repository for model building (format: username/repo-name)"
           },
           {
             "name": "code_connection_arn",
@@ -142,7 +142,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "ARN of the CodeStar connection for GitHub access"
+            "description": "Connection ARN, CodeStar connection ARN, or GitHub connection ARN for repository access"
           },
           {
             "name": "feature_group_name",
@@ -151,7 +151,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "Name of the SageMaker Feature Store group"
+            "description": "Feature group, feature group name, or SageMaker Feature Store group name"
           },
           {
             "name": "bucket_name",
@@ -160,7 +160,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "S3 bucket name for storing artifacts"
+            "description": "S3 bucket, bucket name, or artifact storage bucket for ML artifacts"
           },
           {
             "name": "mlflow_tracking_server_arn",
@@ -169,7 +169,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "ARN of the MLflow tracking server"
+            "description": "MLflow server, MLflow tracking server ARN, or MLflow server ARN for experiment tracking"
           },
           {
             "name": "pipeline_name",
@@ -178,7 +178,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "Name of the SageMaker pipeline to execute"
+            "description": "Pipeline, pipeline name, or SageMaker training pipeline name to execute"
           },
           {
             "name": "region",

@@ -22,7 +22,8 @@
         "sagemaker:CreateModelPackage",
         "sagemaker:DescribeModelPackage",
         "sagemaker:ListModelPackages",
-        "sagemaker:UpdateModelPackage"
+        "sagemaker:UpdateModelPackage",
+        "sagemaker:AddTags"
       ],
       "Resource": "*"
     },
@@ -51,7 +52,9 @@
         "bedrock:Retrieve",
         "bedrock:GetAgent",
         "bedrock:GetAgentActionGroup",
-        "bedrock:InvokeAgent"
+        "bedrock:InvokeAgent",
+        "bedrock:GetInferenceProfile",
+        "bedrock:ListInferenceProfiles"
       ],
       "Resource": "*"
     },
@@ -172,7 +175,9 @@
         "arn:aws:s3:::codepipeline-*",
         "arn:aws:s3:::codepipeline-*/*",
         "arn:aws:s3:::aws-mlops-*",
-        "arn:aws:s3:::aws-mlops-*/*"
+        "arn:aws:s3:::aws-mlops-*/*",
+        "arn:aws:s3:::game-ml-artifacts-*",
+        "arn:aws:s3:::game-ml-artifacts-*/*"
       ]
     },
     {

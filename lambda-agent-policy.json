@@ -103,7 +103,9 @@
         "arn:aws:s3:::sagemaker-*",
         "arn:aws:s3:::sagemaker-*/*",
         "arn:aws:s3:::mlflow-*",
-        "arn:aws:s3:::mlflow-*/*"
+        "arn:aws:s3:::mlflow-*/*",
+        "arn:aws:s3:::game-ml-artifacts-*",
+        "arn:aws:s3:::game-ml-artifacts-*/*"
       ]
     },
     {

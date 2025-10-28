@@ -85,7 +85,8 @@
         "servicecatalog:ProvisionProduct",
         "servicecatalog:DescribeProvisionedProduct",
         "servicecatalog:UpdateProvisionedProduct",
-        "servicecatalog:TerminateProvisionedProduct"
+        "servicecatalog:TerminateProvisionedProduct",
+        "servicecatalog:ListProvisioningArtifacts"
       ],
       "Resource": "*"
     },

@@ -86,7 +86,10 @@
         "servicecatalog:DescribeProvisionedProduct",
         "servicecatalog:UpdateProvisionedProduct",
         "servicecatalog:TerminateProvisionedProduct",
-        "servicecatalog:ListProvisioningArtifacts"
+        "servicecatalog:ListProvisioningArtifacts",
+        "servicecatalog:DescribeProvisioningArtifact",
+        "servicecatalog:ListLaunchPaths",
+        "servicecatalog:DescribeProductAsAdmin"
       ],
       "Resource": "*"
     },

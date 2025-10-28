@@ -111,7 +111,8 @@
         "s3:PutObjectTagging",
         "s3:GetObjectTagging",
         "s3:PutBucketTagging",
-        "s3:GetBucketTagging"
+        "s3:GetBucketTagging",
+        "s3:HeadBucket"
       ],
       "Resource": [
         "arn:aws:s3:::sagemaker-*",
@@ -133,7 +134,9 @@
       "Resource": [
         "arn:aws:iam::*:role/service-role/AmazonSageMaker*",
         "arn:aws:iam::*:role/MLOps*",
-        "arn:aws:iam::*:role/SageMaker*"
+        "arn:aws:iam::*:role/SageMaker*",
+        "arn:aws:iam::*:role/mlops-agent-role",
+        "arn:aws:iam::*:role/lambda-agent-role"
       ]
     },
     {

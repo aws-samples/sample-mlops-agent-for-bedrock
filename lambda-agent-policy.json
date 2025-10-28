@@ -89,7 +89,15 @@
         "servicecatalog:ListProvisioningArtifacts",
         "servicecatalog:DescribeProvisioningArtifact",
         "servicecatalog:ListLaunchPaths",
-        "servicecatalog:DescribeProductAsAdmin"
+        "servicecatalog:DescribeProductAsAdmin",
+        "servicecatalog:AcceptPortfolioShare",
+        "servicecatalog:ListAcceptedPortfolioShares",
+        "servicecatalog:ListPortfolios",
+        "servicecatalog:DescribePortfolio",
+        "servicecatalog:ListRecordHistory",
+        "servicecatalog:DescribeRecord",
+        "servicecatalog:ListPortfoliosForProduct",
+        "servicecatalog:DescribeProvisioningParameters"
       ],
       "Resource": "*"
     },

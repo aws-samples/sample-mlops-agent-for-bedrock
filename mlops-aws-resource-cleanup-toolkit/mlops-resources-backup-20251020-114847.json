@@ -1,0 +1,3439 @@
+{
+    "ResourceTagMappingList": [
+        {
+            "ResourceARN": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-prod/180b9360-add0-11f0-824d-0ae3cc5b73dd",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "prod"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:cloudformation:us-west-2:898167383251:stack/SC-898167383251-pp-4bgf2jzq7ly6k/6c03d3e0-adc8-11f0-a5ae-02dda18e0ab3",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:product/prod-txwcxmr6k3xsc"
+                },
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::898167383251:assumed-role/lambda-agent-role/mlops-project-management"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-zbe7bzqw3amuw"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:portfolio/port-6eibsl3fvslla"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:us-west-2:898167383251:stack/mlops-player-churn-p-sz7oa2mcmmo5/pp-4bgf2jzq7ly6k"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-test-mlops-repo-population-v1-p-qpzcbzyzztby-deploy-staging/2fd20fa0-7bb8-11f0-b94d-02e401819c81",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "test-mlops-repo-population-v1"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "staging"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-qpzcbzyzztby"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-test-mlops-repo-population-v1-p-qpzcbzyzztby-deploy-prod/cc1c0ba0-7bc1-11f0-9151-06c0a7d09d31",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "test-mlops-repo-population-v1"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "prod"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-qpzcbzyzztby"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:codebuild:us-west-2:898167383251:project/sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-modeldeploy",
+            "Tags": [
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "SC-898167383251-pp-4bgf2jzq7ly6k"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/SC-898167383251-pp-4bgf2jzq7ly6k/6c03d3e0-adc8-11f0-a5ae-02dda18e0ab3"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:portfolio/port-6eibsl3fvslla"
+                },
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:product/prod-txwcxmr6k3xsc"
+                },
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::898167383251:assumed-role/lambda-agent-role/mlops-project-management"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "ModelDeployBuildProject"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-zbe7bzqw3amuw"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:us-west-2:898167383251:stack/mlops-player-churn-p-sz7oa2mcmmo5/pp-4bgf2jzq7ly6k"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:lambda:us-west-2:898167383251:function:sagemaker-p-sz7oa2mcmmo5-git-seedcodecheckin",
+            "Tags": [
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "SC-898167383251-pp-4bgf2jzq7ly6k"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/SC-898167383251-pp-4bgf2jzq7ly6k/6c03d3e0-adc8-11f0-a5ae-02dda18e0ab3"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:portfolio/port-6eibsl3fvslla"
+                },
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:product/prod-txwcxmr6k3xsc"
+                },
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::898167383251:assumed-role/lambda-agent-role/mlops-project-management"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "GitSeedCodeCheckinProjectTriggerLambda"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-zbe7bzqw3amuw"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:us-west-2:898167383251:stack/mlops-player-churn-p-sz7oa2mcmmo5/pp-4bgf2jzq7ly6k"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/mlops-player-churn-prod-1760976979-aws-endpoint",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-prod"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-prod/180b9360-add0-11f0-824d-0ae3cc5b73dd"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "prod"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "Endpoint"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/player-churn-features-1757089240-feature-group-pipeline-version",
+            "Tags": [
+                {
+                    "Key": "StoreType",
+                    "Value": "OnlineOnly"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "Purpose",
+                    "Value": "FeatureStore"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/mlops-player-churn3-p-0irrznkzq08o-1760662300-aws-model-package-group",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn3"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "RegisterAbaloneModel-RegisterModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn3-p-0irrznkzq08o/execution/vce6yg5xmea3"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-0irrznkzq08o"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/player-churn-models-1760662074-aws-model-package-group",
+            "Tags": [
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "Purpose",
+                    "Value": "ModelRegistry"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial/2pyai8sul48q",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "test-mlops-repo-population-v1"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-qpzcbzyzztby"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial/qb0qdvxfp5qv",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "player-analytics-mlops-v2"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-aim9eqj6xfw5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-vce6yg5xmea3-PreprocessAbaloneDat-rtkowxQKbF-aws-processing-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn3"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "PreprocessAbaloneData"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn3-p-0irrznkzq08o/execution/vce6yg5xmea3"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-0irrznkzq08o"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-fj1qdrdzs2y2-EvaluateAbaloneModel-6Z6TwJdPjh-aws-processing-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "EvaluateAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn-p-sz7oa2mcmmo5/execution/fj1qdrdzs2y2"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:model-package-group/mlops-player-churn-p-sz7oa2mcmmo5",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "RegisterAbaloneModel-RegisterModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn-p-sz7oa2mcmmo5/execution/vhexnw8n6g54"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn-p-sz7oa2mcmmo5",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:processing-job/pipelines-vce6yg5xmea3-EvaluateAbaloneModel-lx1yWJw9qf",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn3"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "EvaluateAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn3-p-0irrznkzq08o/execution/vce6yg5xmea3"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-0irrznkzq08o"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:processing-job/pipelines-2pyai8sul48q-PreprocessAbaloneDat-qTC5xjuQFU",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "test-mlops-repo-population-v1"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "PreprocessAbaloneData"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/test-mlops-repo-population-v1-p-qpzcbzyzztby/execution/2pyai8sul48q"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-qpzcbzyzztby"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:processing-job/pipelines-fj1qdrdzs2y2-EvaluateAbaloneModel-6Z6TwJdPjh",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "EvaluateAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn-p-sz7oa2mcmmo5/execution/fj1qdrdzs2y2"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:training-job/pipelines-vce6yg5xmea3-TrainAbaloneModel-dwH1HAiu7n",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn3"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "TrainAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn3-p-0irrznkzq08o/execution/vce6yg5xmea3"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-0irrznkzq08o"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:training-job/pipelines-5mzgua1azwn7-TrainAbaloneModel-SzbbIgzwIm",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "player-analytics-mlops-v2"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "TrainAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/player-analytics-mlops-v2-p-aim9eqj6xfw5/execution/5mzgua1azwn7"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-aim9eqj6xfw5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:training-job/pipelines-qb0qdvxfp5qv-TrainAbaloneModel-R0j4AllKkW",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "player-analytics-mlops-v2"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "TrainAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/player-analytics-mlops-v2-p-aim9eqj6xfw5/execution/qb0qdvxfp5qv"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-aim9eqj6xfw5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:training-job/pipelines-2pyai8sul48q-TrainAbaloneModel-pWbGcitZa1",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "test-mlops-repo-population-v1"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "TrainAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/test-mlops-repo-population-v1-p-qpzcbzyzztby/execution/2pyai8sul48q"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-qpzcbzyzztby"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:codebuild:us-west-2:898167383251:project/sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-git-seedcodecheckin",
+            "Tags": [
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "SC-898167383251-pp-4bgf2jzq7ly6k"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/SC-898167383251-pp-4bgf2jzq7ly6k/6c03d3e0-adc8-11f0-a5ae-02dda18e0ab3"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:portfolio/port-6eibsl3fvslla"
+                },
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:product/prod-txwcxmr6k3xsc"
+                },
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::898167383251:assumed-role/lambda-agent-role/mlops-project-management"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "GitSeedCodeCheckinProject"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-zbe7bzqw3amuw"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:us-west-2:898167383251:stack/mlops-player-churn-p-sz7oa2mcmmo5/pp-4bgf2jzq7ly6k"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:codepipeline:us-west-2:898167383251:sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-modelbuild",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:s3:::sagemaker-project-p-sz7oa2mcmmo5",
+            "Tags": [
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "SC-898167383251-pp-4bgf2jzq7ly6k"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/SC-898167383251-pp-4bgf2jzq7ly6k/6c03d3e0-adc8-11f0-a5ae-02dda18e0ab3"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:portfolio/port-6eibsl3fvslla"
+                },
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:product/prod-txwcxmr6k3xsc"
+                },
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::898167383251:assumed-role/lambda-agent-role/mlops-project-management"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "MlOpsArtifactsBucket"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-zbe7bzqw3amuw"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:us-west-2:898167383251:stack/mlops-player-churn-p-sz7oa2mcmmo5/pp-4bgf2jzq7ly6k"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:action/test-mlops-repo-population-v1-staging-1755469154-1-aws-endpoint",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "test-mlops-repo-population-v1"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "sagemaker-test-mlops-repo-population-v1-p-qpzcbzyzztby-deploy-staging"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-test-mlops-repo-population-v1-p-qpzcbzyzztby-deploy-staging/2fd20fa0-7bb8-11f0-b94d-02e401819c81"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "staging"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "Endpoint"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-qpzcbzyzztby"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:action/mlops-player-churn-staging-1760976608-1-aws-endpoint",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-staging"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-staging/3a095110-adcf-11f0-a7a3-02129e61a3c3"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "staging"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "Endpoint"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:code-repository/sagemaker-p-sz7oa2mcmmo5-modelbuild",
+            "Tags": [
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "SC-898167383251-pp-4bgf2jzq7ly6k"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/SC-898167383251-pp-4bgf2jzq7ly6k/6c03d3e0-adc8-11f0-a5ae-02dda18e0ab3"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:portfolio/port-6eibsl3fvslla"
+                },
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:product/prod-txwcxmr6k3xsc"
+                },
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::898167383251:assumed-role/lambda-agent-role/mlops-project-management"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "ModelBuildSagemakerCodeRepository"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-zbe7bzqw3amuw"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:us-west-2:898167383251:stack/mlops-player-churn-p-sz7oa2mcmmo5/pp-4bgf2jzq7ly6k"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/player-churn-features-v2-1760662071-feature-group-pipeline",
+            "Tags": [
+                {
+                    "Key": "StoreType",
+                    "Value": "OnlineOnly"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "Purpose",
+                    "Value": "FeatureStore"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/player-features-1755113953-feature-group-pipeline-version",
+            "Tags": [
+                {
+                    "Key": "StoreType",
+                    "Value": "OnlineOnly"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "Purpose",
+                    "Value": "FeatureStore"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/player-churn-features-1757089240",
+            "Tags": [
+                {
+                    "Key": "StoreType",
+                    "Value": "OnlineOnly"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "Purpose",
+                    "Value": "FeatureStore"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/mlops-player-churn-p-sz7oa2mcmmo5-1760974247-aws-model-package-group",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "RegisterAbaloneModel-RegisterModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn-p-sz7oa2mcmmo5/execution/vhexnw8n6g54"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/player-churn-features-v2-1760662071",
+            "Tags": [
+                {
+                    "Key": "StoreType",
+                    "Value": "OnlineOnly"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "Purpose",
+                    "Value": "FeatureStore"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/mlops-player-churn-staging-1760976608-aws-endpoint",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-staging"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-staging/3a095110-adcf-11f0-a7a3-02129e61a3c3"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "staging"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "Endpoint"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/test-mlops-repo-population-v1-staging-1755469154-aws-endpoint",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "test-mlops-repo-population-v1"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "sagemaker-test-mlops-repo-population-v1-p-qpzcbzyzztby-deploy-staging"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-test-mlops-repo-population-v1-p-qpzcbzyzztby-deploy-staging/2fd20fa0-7bb8-11f0-b94d-02e401819c81"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "staging"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "Endpoint"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-qpzcbzyzztby"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:endpoint/mlops-player-churn-staging",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-staging"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-staging/3a095110-adcf-11f0-a7a3-02129e61a3c3"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "staging"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "Endpoint"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:endpoint/mlops-player-churn-prod",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-prod"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-prod/180b9360-add0-11f0-824d-0ae3cc5b73dd"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "prod"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "Endpoint"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:endpoint-config/EndpointConfig-ruM42vyY494j",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-prod"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-prod/180b9360-add0-11f0-824d-0ae3cc5b73dd"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "prod"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "EndpointConfig"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment/mlops-player-churn-p-sz7oa2mcmmo5",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial/vce6yg5xmea3",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn3"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-0irrznkzq08o"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial/vhexnw8n6g54",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-5mzgua1azwn7-EvaluateAbaloneModel-944ez7bujF-aws-processing-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "player-analytics-mlops-v2"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "EvaluateAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/player-analytics-mlops-v2-p-aim9eqj6xfw5/execution/5mzgua1azwn7"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-aim9eqj6xfw5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-qb0qdvxfp5qv-TrainAbaloneModel-R0j4AllKkW-aws-training-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "player-analytics-mlops-v2"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "TrainAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/player-analytics-mlops-v2-p-aim9eqj6xfw5/execution/qb0qdvxfp5qv"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-aim9eqj6xfw5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-2pyai8sul48q-TrainAbaloneModel-pWbGcitZa1-aws-training-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "test-mlops-repo-population-v1"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "TrainAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/test-mlops-repo-population-v1-p-qpzcbzyzztby/execution/2pyai8sul48q"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-qpzcbzyzztby"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-vhexnw8n6g54-PreprocessAbaloneDat-OdZUQfCIcn-aws-processing-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "PreprocessAbaloneData"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn-p-sz7oa2mcmmo5/execution/vhexnw8n6g54"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-qb0qdvxfp5qv-PreprocessAbaloneDat-FSHTg6DLiu-aws-processing-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "player-analytics-mlops-v2"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "PreprocessAbaloneData"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/player-analytics-mlops-v2-p-aim9eqj6xfw5/execution/qb0qdvxfp5qv"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-aim9eqj6xfw5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:model-package-group/player-churn-models",
+            "Tags": [
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "Purpose",
+                    "Value": "ModelRegistry"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:model-package-group/test-mlops-repo-population-v1-p-qpzcbzyzztby",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "test-mlops-repo-population-v1"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "RegisterAbaloneModel-RegisterModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/test-mlops-repo-population-v1-p-qpzcbzyzztby/execution/2pyai8sul48q"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-qpzcbzyzztby"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:model-package-group/player-analytics-mlops-v2-p-aim9eqj6xfw5",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "player-analytics-mlops-v2"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "RegisterAbaloneModel-RegisterModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/player-analytics-mlops-v2-p-aim9eqj6xfw5/execution/5mzgua1azwn7"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-aim9eqj6xfw5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn3-p-0irrznkzq08o",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn3"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-0irrznkzq08o"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:processing-job/pipelines-2pyai8sul48q-EvaluateAbaloneModel-aaZKrSV217",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "test-mlops-repo-population-v1"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "EvaluateAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/test-mlops-repo-population-v1-p-qpzcbzyzztby/execution/2pyai8sul48q"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-qpzcbzyzztby"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:processing-job/pipelines-fj1qdrdzs2y2-PreprocessAbaloneDat-3tH6ZeKhAD",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "PreprocessAbaloneData"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn-p-sz7oa2mcmmo5/execution/fj1qdrdzs2y2"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:project/mlops-player-churn3",
+            "Tags": [
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:training-job/pipelines-fj1qdrdzs2y2-TrainAbaloneModel-9DtffVr6RR",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "TrainAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn-p-sz7oa2mcmmo5/execution/fj1qdrdzs2y2"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:training-job/pipelines-vhexnw8n6g54-TrainAbaloneModel-y3EJk3pfJz",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "TrainAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn-p-sz7oa2mcmmo5/execution/vhexnw8n6g54"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-staging/3a095110-adcf-11f0-a7a3-02129e61a3c3",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "staging"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:codebuild:us-west-2:898167383251:project/sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-modelbuild",
+            "Tags": [
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "SC-898167383251-pp-4bgf2jzq7ly6k"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/SC-898167383251-pp-4bgf2jzq7ly6k/6c03d3e0-adc8-11f0-a5ae-02dda18e0ab3"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:portfolio/port-6eibsl3fvslla"
+                },
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:product/prod-txwcxmr6k3xsc"
+                },
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::898167383251:assumed-role/lambda-agent-role/mlops-project-management"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "SageMakerModelPipelineBuildProject"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-zbe7bzqw3amuw"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:us-west-2:898167383251:stack/mlops-player-churn-p-sz7oa2mcmmo5/pp-4bgf2jzq7ly6k"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:codepipeline:us-west-2:898167383251:sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-modeldeploy",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:codestar-connections:us-west-2:898167383251:connection/aa6aa8ea-be49-4a04-a50f-fd5571fc9747",
+            "Tags": [
+                {
+                    "Key": "sagemaker",
+                    "Value": "true"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "project",
+                    "Value": "mlopsagent"
+                },
+                {
+                    "Key": "Purpose",
+                    "Value": "MLOpsAutomation"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:action/test-mlops-repo-population-v1-prod-1755473281-1-aws-endpoint",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "test-mlops-repo-population-v1"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "sagemaker-test-mlops-repo-population-v1-p-qpzcbzyzztby-deploy-prod"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-test-mlops-repo-population-v1-p-qpzcbzyzztby-deploy-prod/cc1c0ba0-7bc1-11f0-9151-06c0a7d09d31"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "prod"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "Endpoint"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-qpzcbzyzztby"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:action/mlops-player-churn-prod-1760976979-1-aws-endpoint",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-prod"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-prod/180b9360-add0-11f0-824d-0ae3cc5b73dd"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "prod"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "Endpoint"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/player-churn-features-v2-1760662071-feature-group-pipeline-version",
+            "Tags": [
+                {
+                    "Key": "StoreType",
+                    "Value": "OnlineOnly"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "Purpose",
+                    "Value": "FeatureStore"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/player-churn-features-1757089240-feature-group-pipeline",
+            "Tags": [
+                {
+                    "Key": "StoreType",
+                    "Value": "OnlineOnly"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "Purpose",
+                    "Value": "FeatureStore"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:endpoint-config/EndpointConfig-3jXUQZYabePg",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-staging"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-staging/3a095110-adcf-11f0-a7a3-02129e61a3c3"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "staging"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "EndpointConfig"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-vce6yg5xmea3-EvaluateAbaloneModel-lx1yWJw9qf-aws-processing-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn3"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "EvaluateAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn3-p-0irrznkzq08o/execution/vce6yg5xmea3"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-0irrznkzq08o"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-vhexnw8n6g54-EvaluateAbaloneModel-Hh4W2eSiyy-aws-processing-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "EvaluateAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn-p-sz7oa2mcmmo5/execution/vhexnw8n6g54"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-2pyai8sul48q-EvaluateAbaloneModel-aaZKrSV217-aws-processing-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "test-mlops-repo-population-v1"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "EvaluateAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/test-mlops-repo-population-v1-p-qpzcbzyzztby/execution/2pyai8sul48q"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-qpzcbzyzztby"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-5mzgua1azwn7-TrainAbaloneModel-SzbbIgzwIm-aws-training-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "player-analytics-mlops-v2"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "TrainAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/player-analytics-mlops-v2-p-aim9eqj6xfw5/execution/5mzgua1azwn7"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-aim9eqj6xfw5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-2pyai8sul48q-PreprocessAbaloneDat-qTC5xjuQFU-aws-processing-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "test-mlops-repo-population-v1"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "PreprocessAbaloneData"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/test-mlops-repo-population-v1-p-qpzcbzyzztby/execution/2pyai8sul48q"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-qpzcbzyzztby"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-fj1qdrdzs2y2-TrainAbaloneModel-9DtffVr6RR-aws-training-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "TrainAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn-p-sz7oa2mcmmo5/execution/fj1qdrdzs2y2"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:feature-group/player-churn-features-v2",
+            "Tags": [
+                {
+                    "Key": "StoreType",
+                    "Value": "OnlineOnly"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "Purpose",
+                    "Value": "FeatureStore"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:model/Model-viMjkyUO6aIO",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-staging"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-staging/3a095110-adcf-11f0-a7a3-02129e61a3c3"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "staging"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "Model"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:model/Model-NiIzH04jHqHS",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-prod"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-deploy-prod/180b9360-add0-11f0-824d-0ae3cc5b73dd"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "prod"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "Model"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:processing-job/pipelines-qb0qdvxfp5qv-EvaluateAbaloneModel-FcwajihUKM",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "player-analytics-mlops-v2"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "EvaluateAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/player-analytics-mlops-v2-p-aim9eqj6xfw5/execution/qb0qdvxfp5qv"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-aim9eqj6xfw5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:processing-job/pipelines-vce6yg5xmea3-PreprocessAbaloneDat-rtkowxQKbF",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn3"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "PreprocessAbaloneData"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn3-p-0irrznkzq08o/execution/vce6yg5xmea3"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-0irrznkzq08o"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:project/player-analytics-mlops",
+            "Tags": [
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:codebuild:us-west-2:898167383251:project/sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-testing",
+            "Tags": [
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "SC-898167383251-pp-4bgf2jzq7ly6k"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/SC-898167383251-pp-4bgf2jzq7ly6k/6c03d3e0-adc8-11f0-a5ae-02dda18e0ab3"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:portfolio/port-6eibsl3fvslla"
+                },
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:product/prod-txwcxmr6k3xsc"
+                },
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::898167383251:assumed-role/lambda-agent-role/mlops-project-management"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "ModelDeployTestProject"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-zbe7bzqw3amuw"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:us-west-2:898167383251:stack/mlops-player-churn-p-sz7oa2mcmmo5/pp-4bgf2jzq7ly6k"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:events:us-west-2:898167383251:rule/sagemaker-mlops-player-churn-p-sz7oa2mcmmo5-model",
+            "Tags": [
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "SC-898167383251-pp-4bgf2jzq7ly6k"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/SC-898167383251-pp-4bgf2jzq7ly6k/6c03d3e0-adc8-11f0-a5ae-02dda18e0ab3"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:portfolio/port-6eibsl3fvslla"
+                },
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:product/prod-txwcxmr6k3xsc"
+                },
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::898167383251:assumed-role/lambda-agent-role/mlops-project-management"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "ModelDeploySageMakerEventRule"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-zbe7bzqw3amuw"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:us-west-2:898167383251:stack/mlops-player-churn-p-sz7oa2mcmmo5/pp-4bgf2jzq7ly6k"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:s3:::sagemaker-project-p-0irrznkzq08o",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn3"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-0irrznkzq08o"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:code-repository/sagemaker-p-sz7oa2mcmmo5-modeldeploy",
+            "Tags": [
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "SC-898167383251-pp-4bgf2jzq7ly6k"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/SC-898167383251-pp-4bgf2jzq7ly6k/6c03d3e0-adc8-11f0-a5ae-02dda18e0ab3"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:portfolio/port-6eibsl3fvslla"
+                },
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:product/prod-txwcxmr6k3xsc"
+                },
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::898167383251:assumed-role/lambda-agent-role/mlops-project-management"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "ModelDeploySagemakerCodeRepository"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-zbe7bzqw3amuw"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:us-west-2:898167383251:stack/mlops-player-churn-p-sz7oa2mcmmo5/pp-4bgf2jzq7ly6k"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/fraud-detection-models-1755103214-aws-model-package-group",
+            "Tags": [
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "Purpose",
+                    "Value": "ModelRegistry"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/player-features-1755113953-feature-group-pipeline",
+            "Tags": [
+                {
+                    "Key": "StoreType",
+                    "Value": "OnlineOnly"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "Purpose",
+                    "Value": "FeatureStore"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/test-mlops-repo-population-v1-prod-1755473281-aws-endpoint",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "test-mlops-repo-population-v1"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-name",
+                    "Value": "sagemaker-test-mlops-repo-population-v1-p-qpzcbzyzztby-deploy-prod"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "aws:cloudformation:stack-id",
+                    "Value": "arn:aws:cloudformation:us-west-2:898167383251:stack/sagemaker-test-mlops-repo-population-v1-p-qpzcbzyzztby-deploy-prod/cc1c0ba0-7bc1-11f0-9151-06c0a7d09d31"
+                },
+                {
+                    "Key": "sagemaker:deployment-stage",
+                    "Value": "prod"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:cloudformation:logical-id",
+                    "Value": "Endpoint"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-qpzcbzyzztby"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/player-analytics-mlops-v2-p-aim9eqj6xfw5-1755116103-aws-model-package-group",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "player-analytics-mlops-v2"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "RegisterAbaloneModel-RegisterModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/player-analytics-mlops-v2-p-aim9eqj6xfw5/execution/5mzgua1azwn7"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-aim9eqj6xfw5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/test-mlops-repo-population-v1-p-qpzcbzyzztby-1755468752-aws-model-package-group",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "test-mlops-repo-population-v1"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "RegisterAbaloneModel-RegisterModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/test-mlops-repo-population-v1-p-qpzcbzyzztby/execution/2pyai8sul48q"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-qpzcbzyzztby"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:context/player-features-1755113953",
+            "Tags": [
+                {
+                    "Key": "StoreType",
+                    "Value": "OnlineOnly"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "Purpose",
+                    "Value": "FeatureStore"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment/player-analytics-mlops-v2-p-aim9eqj6xfw5",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "player-analytics-mlops-v2"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-aim9eqj6xfw5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment/test-mlops-repo-population-v1-p-qpzcbzyzztby",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "test-mlops-repo-population-v1"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-qpzcbzyzztby"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment/mlops-player-churn3-p-0irrznkzq08o",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn3"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-0irrznkzq08o"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial/5mzgua1azwn7",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "player-analytics-mlops-v2"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-aim9eqj6xfw5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial/fj1qdrdzs2y2",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-qb0qdvxfp5qv-EvaluateAbaloneModel-FcwajihUKM-aws-processing-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "player-analytics-mlops-v2"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "EvaluateAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/player-analytics-mlops-v2-p-aim9eqj6xfw5/execution/qb0qdvxfp5qv"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-aim9eqj6xfw5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-vhexnw8n6g54-TrainAbaloneModel-y3EJk3pfJz-aws-training-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "TrainAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn-p-sz7oa2mcmmo5/execution/vhexnw8n6g54"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-5mzgua1azwn7-PreprocessAbaloneDat-nZoPQ3ChMT-aws-processing-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "player-analytics-mlops-v2"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "PreprocessAbaloneData"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/player-analytics-mlops-v2-p-aim9eqj6xfw5/execution/5mzgua1azwn7"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-aim9eqj6xfw5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-vce6yg5xmea3-TrainAbaloneModel-dwH1HAiu7n-aws-training-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn3"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "TrainAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn3-p-0irrznkzq08o/execution/vce6yg5xmea3"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-0irrznkzq08o"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:experiment-trial-component/pipelines-fj1qdrdzs2y2-PreprocessAbaloneDat-3tH6ZeKhAD-aws-processing-job",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "PreprocessAbaloneData"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn-p-sz7oa2mcmmo5/execution/fj1qdrdzs2y2"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:model-package-group/mlops-player-churn3-p-0irrznkzq08o",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn3"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "RegisterAbaloneModel-RegisterModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn3-p-0irrznkzq08o/execution/vce6yg5xmea3"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-0irrznkzq08o"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:processing-job/pipelines-vhexnw8n6g54-EvaluateAbaloneModel-Hh4W2eSiyy",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "EvaluateAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn-p-sz7oa2mcmmo5/execution/vhexnw8n6g54"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:processing-job/pipelines-5mzgua1azwn7-PreprocessAbaloneDat-nZoPQ3ChMT",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "player-analytics-mlops-v2"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "PreprocessAbaloneData"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/player-analytics-mlops-v2-p-aim9eqj6xfw5/execution/5mzgua1azwn7"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-aim9eqj6xfw5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:processing-job/pipelines-qb0qdvxfp5qv-PreprocessAbaloneDat-FSHTg6DLiu",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "player-analytics-mlops-v2"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "PreprocessAbaloneData"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/player-analytics-mlops-v2-p-aim9eqj6xfw5/execution/qb0qdvxfp5qv"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-aim9eqj6xfw5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:processing-job/pipelines-5mzgua1azwn7-EvaluateAbaloneModel-944ez7bujF",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "player-analytics-mlops-v2"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "EvaluateAbaloneModel"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/player-analytics-mlops-v2-p-aim9eqj6xfw5/execution/5mzgua1azwn7"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-aim9eqj6xfw5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:processing-job/pipelines-vhexnw8n6g54-PreprocessAbaloneDat-OdZUQfCIcn",
+            "Tags": [
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "sagemaker:pipeline-step-name",
+                    "Value": "PreprocessAbaloneData"
+                },
+                {
+                    "Key": "sagemaker:pipeline-execution-arn",
+                    "Value": "arn:aws:sagemaker:us-west-2:898167383251:pipeline/mlops-player-churn-p-sz7oa2mcmmo5/execution/vhexnw8n6g54"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:project/player-analytics-mlops-v2",
+            "Tags": [
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:project/mlops-player-churn",
+            "Tags": [
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:sagemaker:us-west-2:898167383251:project/test-mlops-repo-population-v1",
+            "Tags": [
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                }
+            ]
+        },
+        {
+            "ResourceARN": "arn:aws:servicecatalog:us-west-2:898167383251:stack/mlops-player-churn-p-sz7oa2mcmmo5/pp-4bgf2jzq7ly6k",
+            "Tags": [
+                {
+                    "Key": "aws:servicecatalog:productArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:product/prod-txwcxmr6k3xsc"
+                },
+                {
+                    "Key": "sagemaker:project-name",
+                    "Value": "mlops-player-churn"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningPrincipalArn",
+                    "Value": "arn:aws:sts::898167383251:assumed-role/lambda-agent-role/mlops-project-management"
+                },
+                {
+                    "Key": "CreatedBy",
+                    "Value": "MLOpsAgent"
+                },
+                {
+                    "Key": "GitHubIntegration",
+                    "Value": "Enabled"
+                },
+                {
+                    "Key": "Environment",
+                    "Value": "Development"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisioningArtifactIdentifier",
+                    "Value": "pa-zbe7bzqw3amuw"
+                },
+                {
+                    "Key": "sagemaker:project-id",
+                    "Value": "p-sz7oa2mcmmo5"
+                },
+                {
+                    "Key": "aws:servicecatalog:portfolioArn",
+                    "Value": "arn:aws:catalog:us-west-2:238502953571:portfolio/port-6eibsl3fvslla"
+                },
+                {
+                    "Key": "aws:servicecatalog:provisionedProductArn",
+                    "Value": "arn:aws:servicecatalog:us-west-2:898167383251:stack/mlops-player-churn-p-sz7oa2mcmmo5/pp-4bgf2jzq7ly6k"
+                }
+            ]
+        }
+    ]
+}

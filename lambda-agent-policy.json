@@ -9,7 +9,9 @@
         "sagemaker:DescribeProject",
         "sagemaker:UpdateProject",
         "sagemaker:DeleteProject",
-        "sagemaker:ListProjects"
+        "sagemaker:ListProjects",
+        "sagemaker:AddTags",
+        "sagemaker:ListTags"
       ],
       "Resource": "*"
     },
@@ -36,7 +38,9 @@
         "sagemaker:CreateModelPackage",
         "sagemaker:DescribeModelPackage",
         "sagemaker:ListModelPackages",
-        "sagemaker:UpdateModelPackage"
+        "sagemaker:UpdateModelPackage",
+        "sagemaker:AddTags",
+        "sagemaker:ListTags"
       ],
       "Resource": "*"
     },
@@ -47,7 +51,9 @@
         "sagemaker:CreateFeatureGroup",
         "sagemaker:DescribeFeatureGroup",
         "sagemaker:ListFeatureGroups",
-        "sagemaker:DeleteFeatureGroup"
+        "sagemaker:DeleteFeatureGroup",
+        "sagemaker:AddTags",
+        "sagemaker:ListTags"
       ],
       "Resource": "*"
     },
@@ -57,12 +63,15 @@
       "Action": [
         "sagemaker-mlflow:*",
         "sagemaker:CreateMlflowTrackingServer",
+        "sagemaker:DescribeMlflowTrackingServer",
         "sagemaker:ListMlflowTrackingServers",
         "sagemaker:UpdateMlflowTrackingServer",
         "sagemaker:DeleteMlflowTrackingServer",
         "sagemaker:StartMlflowTrackingServer",
         "sagemaker:StopMlflowTrackingServer",
-        "sagemaker:CreatePresignedMlflowTrackingServerUrl"
+        "sagemaker:CreatePresignedMlflowTrackingServerUrl",
+        "sagemaker:AddTags",
+        "sagemaker:ListTags"
       ],
       "Resource": "*"
     },
@@ -97,7 +106,12 @@
         "s3:PutObject",
         "s3:DeleteObject",
         "s3:ListBucket",
-        "s3:GetBucketLocation"
+        "s3:GetBucketLocation",
+        "s3:CreateBucket",
+        "s3:PutObjectTagging",
+        "s3:GetObjectTagging",
+        "s3:PutBucketTagging",
+        "s3:GetBucketTagging"
       ],
       "Resource": [
         "arn:aws:s3:::sagemaker-*",
@@ -133,6 +147,17 @@
       "Resource": "*"
     },
     {
+      "Sid": "CodePipelineOperations",
+      "Effect": "Allow",
+      "Action": [
+        "codepipeline:GetPipelineState",
+        "codepipeline:ListActionExecutions",
+        "codepipeline:ListPipelineExecutions",
+        "codepipeline:PutApprovalResult"
+      ],
+      "Resource": "*"
+    },
+    {
       "Sid": "LoggingOperations",
       "Effect": "Allow",
       "Action": [
@@ -140,7 +165,9 @@
         "logs:CreateLogStream",
         "logs:PutLogEvents",
         "logs:DescribeLogGroups",
-        "logs:DescribeLogStreams"
+        "logs:DescribeLogStreams",
+        "logs:TagLogGroup",
+        "logs:PutRetentionPolicy"
       ],
       "Resource": "arn:aws:logs:*:*:log-group:/aws/lambda/mlops-*"
     }

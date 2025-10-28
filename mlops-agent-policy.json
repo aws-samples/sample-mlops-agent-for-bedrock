@@ -23,7 +23,20 @@
         "sagemaker:DescribeModelPackage",
         "sagemaker:ListModelPackages",
         "sagemaker:UpdateModelPackage",
-        "sagemaker:AddTags"
+        "sagemaker:CreateFeatureGroup",
+        "sagemaker:DescribeFeatureGroup",
+        "sagemaker:ListFeatureGroups",
+        "sagemaker:DeleteFeatureGroup",
+        "sagemaker:CreateMlflowTrackingServer",
+        "sagemaker:DescribeMlflowTrackingServer",
+        "sagemaker:ListMlflowTrackingServers",
+        "sagemaker:UpdateMlflowTrackingServer",
+        "sagemaker:DeleteMlflowTrackingServer",
+        "sagemaker:StartMlflowTrackingServer",
+        "sagemaker:StopMlflowTrackingServer",
+        "sagemaker:CreatePresignedMlflowTrackingServerUrl",
+        "sagemaker:AddTags",
+        "sagemaker:ListTags"
       ],
       "Resource": "*"
     },
@@ -67,11 +80,13 @@
         "codeconnections:ListConnections",
         "codeconnections:UpdateConnection",
         "codeconnections:DeleteConnection",
+        "codeconnections:TagResource",
         "codestar-connections:CreateConnection",
         "codestar-connections:GetConnection",
         "codestar-connections:ListConnections",
         "codestar-connections:UpdateConnection",
-        "codestar-connections:DeleteConnection"
+        "codestar-connections:DeleteConnection",
+        "codestar-connections:TagResource"
       ],
       "Resource": "*"
     },
@@ -165,7 +180,11 @@
         "s3:CreateBucket",
         "s3:DeleteBucket",
         "s3:GetBucketVersioning",
-        "s3:PutBucketVersioning"
+        "s3:PutBucketVersioning",
+        "s3:PutObjectTagging",
+        "s3:GetObjectTagging",
+        "s3:PutBucketTagging",
+        "s3:GetBucketTagging"
       ],
       "Resource": [
         "arn:aws:s3:::sagemaker-*",
@@ -195,6 +214,20 @@
         "arn:aws:iam::*:role/CodePipeline*",
         "arn:aws:iam::*:role/CodeBuild*"
       ]
+    },
+    {
+      "Sid": "LoggingOperations",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+        "logs:DescribeLogGroups",
+        "logs:DescribeLogStreams",
+        "logs:TagLogGroup",
+        "logs:PutRetentionPolicy"
+      ],
+      "Resource": "*"
     }
   ]
 }

@@ -22,21 +22,7 @@
         "sagemaker:CreateModelPackage",
         "sagemaker:DescribeModelPackage",
         "sagemaker:ListModelPackages",
-        "sagemaker:UpdateModelPackage",
-        "sagemaker:CreateFeatureGroup",
-        "sagemaker:DescribeFeatureGroup",
-        "sagemaker:ListFeatureGroups",
-        "sagemaker:DeleteFeatureGroup",
-        "sagemaker:CreateMlflowTrackingServer",
-        "sagemaker:DescribeMlflowTrackingServer",
-        "sagemaker:ListMlflowTrackingServers",
-        "sagemaker:UpdateMlflowTrackingServer",
-        "sagemaker:DeleteMlflowTrackingServer",
-        "sagemaker:StartMlflowTrackingServer",
-        "sagemaker:StopMlflowTrackingServer",
-        "sagemaker:CreatePresignedMlflowTrackingServerUrl",
-        "sagemaker:AddTags",
-        "sagemaker:ListTags"
+        "sagemaker:UpdateModelPackage"
       ],
       "Resource": "*"
     },
@@ -69,7 +55,11 @@
         "bedrock:GetInferenceProfile",
         "bedrock:ListInferenceProfiles"
       ],
-      "Resource": "*"
+      "Resource": [
+        "*",
+        "arn:aws:bedrock:*::foundation-model/*",
+        "arn:aws:bedrock:*:*:inference-profile/*"
+      ]
     },
     {
       "Sid": "CodeConnectionsOperations",
@@ -80,13 +70,11 @@
         "codeconnections:ListConnections",
         "codeconnections:UpdateConnection",
         "codeconnections:DeleteConnection",
-        "codeconnections:TagResource",
         "codestar-connections:CreateConnection",
         "codestar-connections:GetConnection",
         "codestar-connections:ListConnections",
         "codestar-connections:UpdateConnection",
-        "codestar-connections:DeleteConnection",
-        "codestar-connections:TagResource"
+        "codestar-connections:DeleteConnection"
       ],
       "Resource": "*"
     },
@@ -181,10 +169,6 @@
         "s3:DeleteBucket",
         "s3:GetBucketVersioning",
         "s3:PutBucketVersioning",
-        "s3:PutObjectTagging",
-        "s3:GetObjectTagging",
-        "s3:PutBucketTagging",
-        "s3:GetBucketTagging",
         "s3:HeadBucket"
       ],
       "Resource": [
@@ -217,20 +201,6 @@
         "arn:aws:iam::*:role/mlops-agent-role",
         "arn:aws:iam::*:role/lambda-agent-role"
       ]
-    },
-    {
-      "Sid": "LoggingOperations",
-      "Effect": "Allow",
-      "Action": [
-        "logs:CreateLogGroup",
-        "logs:CreateLogStream",
-        "logs:PutLogEvents",
-        "logs:DescribeLogGroups",
-        "logs:DescribeLogStreams",
-        "logs:TagLogGroup",
-        "logs:PutRetentionPolicy"
-      ],
-      "Resource": "*"
     }
   ]
 }

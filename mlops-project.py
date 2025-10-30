@@ -73,7 +73,7 @@ def lambda_handler(event, context):
     
     try:
         # Route to appropriate handler based on API path
-        if api_path == '/create-code-connection':
+        if api_path == '/create-code-connection' or api_path == '/configure-code-connection':
             return create_code_connection(params)
         elif api_path == '/create-mlops-project':
             return create_mlops_project(params)

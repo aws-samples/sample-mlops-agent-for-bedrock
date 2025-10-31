@@ -113,7 +113,7 @@ The MLOps Lambda function automatically tags the following resources when create
 
 ### 📝 **CloudWatch Log Groups**
 
-**Important**: AWS does not automatically tag CloudWatch log groups, even when they're created by tagged resources. Log groups must be manually tagged if cleanup is desired.
+The Bedrock agent automatically tags CloudWatch log groups when creating resources. The cleanup script will remove log groups tagged with `CreatedBy=MLOpsAgent`.
 
 **Common log group patterns:**
 - `/aws/lambda/{function-name}` - Created by Lambda functions
@@ -121,14 +121,7 @@ The MLOps Lambda function automatically tags the following resources when create
 - `/aws/sagemaker/TrainingJobs` - Created by SageMaker training jobs
 - `/aws/codebuild/{project-name}` - Created by CodeBuild projects
 
-**To tag a log group:**
-```bash
-aws logs tag-log-group \
-  --log-group-name /aws/lambda/mlops-project-management \
-  --tags CreatedBy=MLOpsAgent
-```
-
-**Recommended**: Set retention policies to auto-expire logs:
+**Recommended**: Set retention policies to auto-expire logs and reduce storage costs:
 ```bash
 aws logs put-retention-policy \
   --log-group-name /aws/lambda/mlops-project-management \
@@ -146,7 +139,7 @@ The cleanup toolkit removes resources created by the MLOps Lambda function and a
 - **MLflow** - Tracking servers
 - **Amazon ECR** - Container repositories
 - **Amazon EventBridge** - Rules and targets
-- **CloudWatch Logs** - Log groups (must be manually tagged)
+- **CloudWatch Logs** - Log groups (automatically tagged by Bedrock agent)
 
 ### Additional Cleanup
 - **IAM** - Roles and inline policies (policies detached first)

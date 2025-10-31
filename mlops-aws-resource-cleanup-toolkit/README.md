@@ -111,6 +111,30 @@ The MLOps Lambda function automatically tags the following resources when create
 
 **These Service Catalog-created resources are NOT automatically tagged** during creation and must be tagged manually through the AWS Console with `CreatedBy=MLOpsAgent` if cleanup is desired.
 
+### 📝 **CloudWatch Log Groups**
+
+**Important**: AWS does not automatically tag CloudWatch log groups, even when they're created by tagged resources. Log groups must be manually tagged if cleanup is desired.
+
+**Common log group patterns:**
+- `/aws/lambda/{function-name}` - Created by Lambda functions
+- `/aws/sagemaker/Endpoints/{endpoint-name}` - Created by SageMaker endpoints
+- `/aws/sagemaker/TrainingJobs` - Created by SageMaker training jobs
+- `/aws/codebuild/{project-name}` - Created by CodeBuild projects
+
+**To tag a log group:**
+```bash
+aws logs tag-log-group \
+  --log-group-name /aws/lambda/mlops-project-management \
+  --tags CreatedBy=MLOpsAgent
+```
+
+**Recommended**: Set retention policies to auto-expire logs:
+```bash
+aws logs put-retention-policy \
+  --log-group-name /aws/lambda/mlops-project-management \
+  --retention-in-days 7
+```
+
 ## 🔍 **Supported AWS Services**
 
 The cleanup toolkit removes resources created by the MLOps Lambda function and any other AWS resources tagged with `CreatedBy=MLOpsAgent`.
@@ -118,14 +142,16 @@ The cleanup toolkit removes resources created by the MLOps Lambda function and a
 ### Fully Supported (Complete cleanup)
 - **Amazon S3** - Buckets (contents emptied first, then bucket deleted)
 - **CodeStar Connections** - GitHub/GitLab connections
-- **Amazon SageMaker** - Projects, model package groups, feature groups, pipelines, models, endpoint configs
+- **Amazon SageMaker** - Projects, model package groups, feature groups, pipelines, models, endpoints, endpoint configs
 - **MLflow** - Tracking servers
 - **Amazon ECR** - Container repositories
 - **Amazon EventBridge** - Rules and targets
+- **CloudWatch Logs** - Log groups (must be manually tagged)
 
 ### Additional Cleanup
 - **IAM** - Roles and inline policies (policies detached first)
 - **CloudFormation** - Stacks created by SageMaker projects
+- **CodePipeline** - CI/CD pipelines created by SageMaker projects
 
 ## 📋 **Usage Examples**
 
@@ -221,13 +247,17 @@ Change the resource discovery queries to match your naming conventions.
 ## 📊 **What Gets Cleaned Up (In Order)**
 
 The cleanup process removes resources in this order to handle dependencies:
-1. SageMaker projects and models
+1. SageMaker projects, models, endpoints, and pipelines
 2. MLflow tracking servers  
-3. CodeStar connections
-4. Lambda functions and layers
-5. S3 buckets (contents emptied first)
-6. Bedrock agents and knowledge bases
-7. IAM roles (policies detached first)
+3. CodePipeline pipelines
+4. CodeStar connections
+5. Lambda functions
+6. CloudWatch log groups
+7. S3 buckets (contents emptied first)
+8. Bedrock agents
+9. IAM roles (policies detached first)
+10. ECR repositories
+11. EventBridge rules
 
 ## 🎉 **Success Indicators**
 

@@ -677,6 +677,36 @@ cleanup_sagemaker_buckets() {
     fi
 }
 
+# Function to cleanup CloudWatch Log Groups
+cleanup_cloudwatch_log_groups() {
+    print_step "17" "Cleaning up CloudWatch Log Groups"
+    
+    log_groups=$(aws logs describe-log-groups --query "logGroups[].logGroupName" --output text 2>/dev/null || echo "")
+    
+    if [[ -n "$log_groups" ]]; then
+        for log_group in $log_groups; do
+            # Check if log group has our tags
+            tags=$(aws logs list-tags-log-group --log-group-name "$log_group" --query "tags.$PROJECT_TAG_KEY" --output text 2>/dev/null || echo "")
+            
+            if [[ "$tags" == "$PROJECT_TAG_VALUE" ]]; then
+                if confirm_resource_deletion "$log_group" "CloudWatch Log Group"; then
+                    if [[ "$DRY_RUN" == "true" ]]; then
+                        echo "Would delete CloudWatch log group: $log_group"
+                    else
+                        echo "Deleting CloudWatch log group: $log_group"
+                        aws logs delete-log-group --log-group-name "$log_group" 2>/dev/null || print_warning "Failed to delete log group $log_group"
+                        print_success "Deleted CloudWatch log group: $log_group"
+                    fi
+                else
+                    echo "Skipped CloudWatch log group: $log_group"
+                fi
+            fi
+        done
+    else
+        print_warning "No CloudWatch log groups found"
+    fi
+}
+
 # Main execution
 main() {
     echo -e "${BLUE}🧹 MLOps Bedrock Agent - Tag-Based Cleanup${NC}"
@@ -707,6 +737,7 @@ main() {
     cleanup_codepipeline_pipelines
     cleanup_codestar_connections
     cleanup_lambda_functions
+    cleanup_cloudwatch_log_groups
     cleanup_s3_buckets
     cleanup_bedrock_agents
     cleanup_iam_roles

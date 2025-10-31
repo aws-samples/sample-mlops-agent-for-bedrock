@@ -20,6 +20,34 @@ codeconnections_client = boto3.client('codeconnections')
 servicecatalog_client = boto3.client('servicecatalog')
 logs_client = boto3.client('logs')
 
+def tag_mlops_log_groups():
+    """
+    Tag all MLOps-related log groups with CreatedBy: MLOpsAgent
+    """
+    try:
+        # Patterns for MLOps-related log groups
+        patterns = [
+            '/aws/codebuild/sagemaker-mlops-',
+            '/aws/lambda/sagemaker-p-',
+            '/aws/sagemaker/mlflow/'
+        ]
+        
+        paginator = logs_client.get_paginator('describe_log_groups')
+        
+        for pattern in patterns:
+            for page in paginator.paginate():
+                for log_group in page['logGroups']:
+                    log_group_name = log_group['logGroupName']
+                    
+                    if pattern in log_group_name:
+                        tag_log_group(log_group_name, {
+                            'CreatedBy': 'MLOpsAgent',
+                            'Purpose': 'MLOpsAutomation'
+                        })
+                        
+    except Exception as e:
+        logger.warning(f"Could not tag MLOps log groups: {str(e)}")
+
 def tag_log_group(log_group_name, tags=None):
     """Tag CloudWatch log group with CreatedBy and other tags"""
     if tags is None:
@@ -49,6 +77,10 @@ def lambda_handler(event, context):
             'CreatedBy': 'MLOpsAgent',
             'Purpose': 'MLOpsAutomation'
         })
+        
+        # Tag other MLOps-related log groups
+        tag_mlops_log_groups()
+        
     except Exception as e:
         logger.warning(f"Could not tag Lambda log group: {str(e)}")
     

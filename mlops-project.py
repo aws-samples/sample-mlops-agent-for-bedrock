@@ -71,9 +71,13 @@ def lambda_handler(event, context):
     logger.info(f"HTTP Method: {http_method}")
     logger.info(f"Extracted Parameters: {params}")
     
+    logger.info("About to enter routing logic...")
+    
     try:
         # Route to appropriate handler based on API path
+        logger.info(f"Checking API path: '{api_path}'")
         if api_path == '/create-code-connection' or api_path == '/configure-code-connection':
+            logger.info("Matched /configure-code-connection, calling create_code_connection")
             return create_code_connection(params)
         elif api_path == '/create-mlops-project':
             return create_mlops_project(params)
@@ -193,21 +197,34 @@ def create_code_connection(params: Dict[str, Any]) -> Dict[str, Any]:
         connection_arn = response['ConnectionArn']
         connection_status = response.get('ConnectionStatus', 'PENDING')
         
-        return {
-            'statusCode': 201,
-            'body': {
-                'message': f'Successfully created CodeConnections connection: {connection_name}',
-                'connection_name': connection_name,
-                'connection_arn': connection_arn,
-                'connection_status': connection_status,
-                'provider_type': provider_type,
-                'next_steps': [
-                    'Complete the connection setup in the AWS Console',
-                    'Authorize the connection with your GitHub account',
-                    'Verify the connection status shows as Available'
-                ]
+        result = {
+            'messageVersion': '1.0',
+            'response': {
+                'actionGroup': 'ProjectManagement',
+                'apiPath': '/configure-code-connection',
+                'httpMethod': 'POST',
+                'httpStatusCode': 201,
+                'responseBody': {
+                    'application/json': {
+                        'body': json.dumps({
+                            'message': f'Successfully created CodeConnections connection: {connection_name}',
+                            'connection_name': connection_name,
+                            'connection_arn': connection_arn,
+                            'connection_status': connection_status,
+                            'provider_type': provider_type,
+                            'next_steps': [
+                                'Complete the connection setup in the AWS Console',
+                                'Authorize the connection with your GitHub account',
+                                'Verify the connection status shows as Available'
+                            ]
+                        })
+                    }
+                }
             }
         }
+        
+        logger.info(f"Returning result: {json.dumps(result, default=str)}")
+        return result
         
     except Exception as e:
         logger.error(f"Error creating CodeConnections connection: {str(e)}", exc_info=True)

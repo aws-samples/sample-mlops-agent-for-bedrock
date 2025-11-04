@@ -8,8 +8,8 @@
   "paths": {
     "/configure-code-connection": {
       "post": {
-        "summary": "Set up AWS CodeStar connection for GitHub integration",
-        "description": "Creates a CodeStar connection to enable GitHub integration with AWS services",
+        "summary": "Set up AWS CodeConnection for GitHub integration",
+        "description": "Creates a CodeConnection connection to enable GitHub integration with AWS services",
         "operationId": "configureCodeConnection",
         "parameters": [
           {
@@ -19,7 +19,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "Name for the CodeStar connection"
+            "description": "Name for the CodeConnection connection"
           },
           {
             "name": "provider_type",
@@ -54,8 +54,9 @@
     },
     "/create-mlops-project": {
       "post": {
-        "summary": "Create a new SageMaker MLOps project with GitHub integration",
-        "description": "Creates a SageMaker project using MLOps template with GitHub repository integration for CI/CD pipelines",
+        "summary": "Create MLOps project, Create SageMaker project, Set up MLOps project, Initialize MLOps project",
+        "description": "Creates a new SageMaker MLOps project with GitHub integration. Use this when user asks to 'create MLOps project', 'create SageMaker project', 'set up MLOps project', 'initialize project', or similar requests for NEW project creation with GitHub repositories.",
+
         "operationId": "createMLOpsProject",
         "parameters": [
           {

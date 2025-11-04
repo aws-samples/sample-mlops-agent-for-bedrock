@@ -1,194 +1,211 @@
 {
-  "Version": "2012-10-17",
-  "Statement": [
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "SageMakerProjectManagement",
+			"Effect": "Allow",
+			"Action": [
+				"sagemaker:CreateProject",
+				"sagemaker:DescribeProject",
+				"sagemaker:UpdateProject",
+				"sagemaker:DeleteProject",
+				"sagemaker:ListProjects",
+				"sagemaker:AddTags",
+				"sagemaker:ListTags"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "SageMakerPipelineOperations",
+			"Effect": "Allow",
+			"Action": [
+				"sagemaker:CreatePipeline",
+				"sagemaker:DescribePipeline",
+				"sagemaker:StartPipelineExecution",
+				"sagemaker:DescribePipelineExecution",
+				"sagemaker:ListPipelineExecutions",
+				"sagemaker:StopPipelineExecution"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "SageMakerModelRegistry",
+			"Effect": "Allow",
+			"Action": [
+				"sagemaker:CreateModelPackageGroup",
+				"sagemaker:DescribeModelPackageGroup",
+				"sagemaker:ListModelPackageGroups",
+				"sagemaker:CreateModelPackage",
+				"sagemaker:DescribeModelPackage",
+				"sagemaker:ListModelPackages",
+				"sagemaker:UpdateModelPackage",
+				"sagemaker:AddTags",
+				"sagemaker:ListTags"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "SageMakerFeatureStore",
+			"Effect": "Allow",
+			"Action": [
+				"sagemaker:CreateFeatureGroup",
+				"sagemaker:DescribeFeatureGroup",
+				"sagemaker:ListFeatureGroups",
+				"sagemaker:DeleteFeatureGroup",
+				"sagemaker:AddTags",
+				"sagemaker:ListTags"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "SageMakerMLflowTracking",
+			"Effect": "Allow",
+			"Action": [
+				"sagemaker-mlflow:*",
+				"sagemaker:CreateMlflowTrackingServer",
+				"sagemaker:DescribeMlflowTrackingServer",
+				"sagemaker:ListMlflowTrackingServers",
+				"sagemaker:UpdateMlflowTrackingServer",
+				"sagemaker:DeleteMlflowTrackingServer",
+				"sagemaker:StartMlflowTrackingServer",
+				"sagemaker:StopMlflowTrackingServer",
+				"sagemaker:CreatePresignedMlflowTrackingServerUrl",
+				"sagemaker:AddTags",
+				"sagemaker:ListTags"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "ServiceCatalogOperations",
+			"Effect": "Allow",
+			"Action": [
+				"servicecatalog:DescribeProduct",
+				"servicecatalog:SearchProducts",
+				"servicecatalog:ProvisionProduct",
+				"servicecatalog:DescribeProvisionedProduct",
+				"servicecatalog:UpdateProvisionedProduct",
+				"servicecatalog:TerminateProvisionedProduct",
+				"servicecatalog:ListProvisioningArtifacts",
+				"servicecatalog:DescribeProvisioningArtifact",
+				"servicecatalog:ListLaunchPaths",
+				"servicecatalog:DescribeProductAsAdmin",
+				"servicecatalog:SearchProductsAsAdmin",
+				"servicecatalog:AcceptPortfolioShare",
+				"servicecatalog:ListAcceptedPortfolioShares",
+				"servicecatalog:ListPortfolios",
+				"servicecatalog:DescribePortfolio",
+				"servicecatalog:ListRecordHistory",
+				"servicecatalog:DescribeRecord",
+				"servicecatalog:ListPortfoliosForProduct",
+				"servicecatalog:DescribeProvisioningParameters",
+				"servicecatalog:ListPortfoliosForProduct", 
+        "servicecatalog:AssociatePrincipalWithPortfolio",
+        "servicecatalog:DisassociatePrincipalFromPortfolio"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "CodeConnections",
+			"Effect": "Allow",
+			"Action": [
+				"codeconnections:*",
+				"codestar-connections:*"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "S3Operations",
+			"Effect": "Allow",
+			"Action": [
+				"s3:GetObject",
+				"s3:PutObject",
+				"s3:DeleteObject",
+				"s3:ListBucket",
+				"s3:GetBucketLocation",
+				"s3:CreateBucket",
+				"s3:PutObjectTagging",
+				"s3:GetObjectTagging",
+				"s3:PutBucketTagging",
+				"s3:GetBucketTagging"
+			],
+			"Resource": [
+				"arn:aws:s3:::sagemaker-*",
+				"arn:aws:s3:::sagemaker-*/*",
+				"arn:aws:s3:::mlflow-*",
+				"arn:aws:s3:::mlflow-*/*",
+				"arn:aws:s3:::game-ml-artifacts-*",
+				"arn:aws:s3:::game-ml-artifacts-*/*",
+				"arn:aws:s3:::game-ml-artifacts",
+				"arn:aws:s3:::game-ml-artifacts/*",
+				"arn:aws:s3:::*mlops*",
+				"arn:aws:s3:::*mlops*/*"
+			]
+		},
+		{
+			"Sid": "IAMRoleOperations",
+			"Effect": "Allow",
+			"Action": [
+				"iam:GetRole",
+				"iam:ListRoles",
+				"iam:PassRole"
+			],
+			"Resource": [
+				"arn:aws:iam::*:role/service-role/AmazonSageMaker*",
+				"arn:aws:iam::*:role/MLOps*",
+				"arn:aws:iam::*:role/SageMaker*",
+				"arn:aws:iam::*:role/mlops-agent-role",
+				"arn:aws:iam::*:role/lambda-agent-role"
+			]
+		},
+		{
+			"Sid": "CloudFormationOperations",
+			"Effect": "Allow",
+			"Action": [
+				"cloudformation:DescribeStacks",
+				"cloudformation:DescribeStackResources",
+				"cloudformation:GetTemplate"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "CodePipelineOperations",
+			"Effect": "Allow",
+			"Action": [
+				"codepipeline:GetPipelineState",
+				"codepipeline:ListActionExecutions",
+				"codepipeline:ListPipelineExecutions",
+				"codepipeline:PutApprovalResult"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "LoggingOperations",
+			"Effect": "Allow",
+			"Action": [
+				"logs:CreateLogGroup",
+				"logs:CreateLogStream",
+				"logs:PutLogEvents",
+				"logs:DescribeLogGroups",
+				"logs:DescribeLogStreams",
+				"logs:TagLogGroup",
+				"logs:PutRetentionPolicy"
+			],
+			"Resource": [
+				"arn:aws:logs:*:*:log-group:/aws/lambda/*",
+				"arn:aws:logs:*:*:log-group:/aws/sagemaker/*",
+        "arn:aws:logs:*:*:log-group:/aws/codebuild/*",
+        "arn:aws:logs:*:*:log-group:/aws/codepipeline/*",
+        "arn:aws:logs:*:*:log-group:/aws/logs/*"
+			]
+		},
     {
-      "Sid": "SageMakerProjectManagement",
-      "Effect": "Allow",
-      "Action": [
-        "sagemaker:CreateProject",
-        "sagemaker:DescribeProject",
-        "sagemaker:UpdateProject",
-        "sagemaker:DeleteProject",
-        "sagemaker:ListProjects",
-        "sagemaker:AddTags",
-        "sagemaker:ListTags"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "SageMakerPipelineOperations",
-      "Effect": "Allow",
-      "Action": [
-        "sagemaker:CreatePipeline",
-        "sagemaker:DescribePipeline",
-        "sagemaker:StartPipelineExecution",
-        "sagemaker:DescribePipelineExecution",
-        "sagemaker:ListPipelineExecutions",
-        "sagemaker:StopPipelineExecution"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "SageMakerModelRegistry",
-      "Effect": "Allow",
-      "Action": [
-        "sagemaker:CreateModelPackageGroup",
-        "sagemaker:DescribeModelPackageGroup",
-        "sagemaker:ListModelPackageGroups",
-        "sagemaker:CreateModelPackage",
-        "sagemaker:DescribeModelPackage",
-        "sagemaker:ListModelPackages",
-        "sagemaker:UpdateModelPackage",
-        "sagemaker:AddTags",
-        "sagemaker:ListTags"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "SageMakerFeatureStore",
-      "Effect": "Allow",
-      "Action": [
-        "sagemaker:CreateFeatureGroup",
-        "sagemaker:DescribeFeatureGroup",
-        "sagemaker:ListFeatureGroups",
-        "sagemaker:DeleteFeatureGroup",
-        "sagemaker:AddTags",
-        "sagemaker:ListTags"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "SageMakerMLflowTracking",
-      "Effect": "Allow",
-      "Action": [
-        "sagemaker-mlflow:*",
-        "sagemaker:CreateMlflowTrackingServer",
-        "sagemaker:DescribeMlflowTrackingServer",
-        "sagemaker:ListMlflowTrackingServers",
-        "sagemaker:UpdateMlflowTrackingServer",
-        "sagemaker:DeleteMlflowTrackingServer",
-        "sagemaker:StartMlflowTrackingServer",
-        "sagemaker:StopMlflowTrackingServer",
-        "sagemaker:CreatePresignedMlflowTrackingServerUrl",
-        "sagemaker:AddTags",
-        "sagemaker:ListTags"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "ServiceCatalogOperations",
-      "Effect": "Allow",
-      "Action": [
-        "servicecatalog:ListProducts",
-        "servicecatalog:DescribeProduct",
-        "servicecatalog:SearchProducts",
-        "servicecatalog:ProvisionProduct",
-        "servicecatalog:DescribeProvisionedProduct",
-        "servicecatalog:UpdateProvisionedProduct",
-        "servicecatalog:TerminateProvisionedProduct",
-        "servicecatalog:ListProvisioningArtifacts",
-        "servicecatalog:DescribeProvisioningArtifact",
-        "servicecatalog:ListLaunchPaths",
-        "servicecatalog:DescribeProductAsAdmin",
-        "servicecatalog:AcceptPortfolioShare",
-        "servicecatalog:ListAcceptedPortfolioShares",
-        "servicecatalog:ListPortfolios",
-        "servicecatalog:DescribePortfolio",
-        "servicecatalog:ListRecordHistory",
-        "servicecatalog:DescribeRecord",
-        "servicecatalog:ListPortfoliosForProduct",
-        "servicecatalog:DescribeProvisioningParameters"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "CodeConnections",
-      "Effect": "Allow",
-      "Action": [
-        "codeconnections:*",
-        "codestar-connections:*"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "S3Operations",
-      "Effect": "Allow",
-      "Action": [
-        "s3:GetObject",
-        "s3:PutObject",
-        "s3:DeleteObject",
-        "s3:ListBucket",
-        "s3:GetBucketLocation",
-        "s3:CreateBucket",
-        "s3:PutObjectTagging",
-        "s3:GetObjectTagging",
-        "s3:PutBucketTagging",
-        "s3:GetBucketTagging",
-        "s3:HeadBucket"
-      ],
-      "Resource": [
-        "arn:aws:s3:::sagemaker-*",
-        "arn:aws:s3:::sagemaker-*/*",
-        "arn:aws:s3:::mlflow-*",
-        "arn:aws:s3:::mlflow-*/*",
-        "arn:aws:s3:::game-ml-artifacts-*",
-        "arn:aws:s3:::game-ml-artifacts-*/*",
-        "arn:aws:s3:::game-ml-artifacts",
-        "arn:aws:s3:::game-ml-artifacts/*",
-        "arn:aws:s3:::*mlops*",
-        "arn:aws:s3:::*mlops*/*"
-      ]
-    },
-    {
-      "Sid": "IAMRoleOperations",
-      "Effect": "Allow",
-      "Action": [
-        "iam:GetRole",
-        "iam:ListRoles",
-        "iam:PassRole"
-      ],
-      "Resource": [
-        "arn:aws:iam::*:role/service-role/AmazonSageMaker*",
-        "arn:aws:iam::*:role/MLOps*",
-        "arn:aws:iam::*:role/SageMaker*",
-        "arn:aws:iam::*:role/mlops-agent-role",
-        "arn:aws:iam::*:role/lambda-agent-role"
-      ]
-    },
-    {
-      "Sid": "CloudFormationOperations",
-      "Effect": "Allow",
-      "Action": [
-        "cloudformation:DescribeStacks",
-        "cloudformation:DescribeStackResources",
-        "cloudformation:GetTemplate"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "CodePipelineOperations",
-      "Effect": "Allow",
-      "Action": [
-        "codepipeline:GetPipelineState",
-        "codepipeline:ListActionExecutions",
-        "codepipeline:ListPipelineExecutions",
-        "codepipeline:PutApprovalResult"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "LoggingOperations",
-      "Effect": "Allow",
-      "Action": [
-        "logs:CreateLogGroup",
-        "logs:CreateLogStream",
-        "logs:PutLogEvents",
-        "logs:DescribeLogGroups",
-        "logs:DescribeLogStreams",
-        "logs:TagLogGroup",
-        "logs:PutRetentionPolicy"
-      ],
-      "Resource": "arn:aws:logs:*:*:log-group:/aws/lambda/mlops-*"
-    }
-  ]
+  "Sid": "STSOperations",
+  "Effect": "Allow",
+  "Action": [
+    "sts:GetCallerIdentity"
+  ],
+  "Resource": "*"
+  }
+
+	]
 }

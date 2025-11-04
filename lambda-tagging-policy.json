@@ -1,0 +1,17 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": [
+				"lambda:TagResource",
+				"lambda:UntagResource",
+				"sagemaker:AddTags",
+				"sagemaker:DeleteTags",
+				"events:TagResource",
+				"events:UntagResource"
+			],
+			"Resource": "*"
+		}
+	]
+}

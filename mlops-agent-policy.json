@@ -68,12 +68,10 @@
         "codeconnections:CreateConnection",
         "codeconnections:GetConnection",
         "codeconnections:ListConnections",
-        "codeconnections:UpdateConnection",
         "codeconnections:DeleteConnection",
         "codestar-connections:CreateConnection",
         "codestar-connections:GetConnection",
         "codestar-connections:ListConnections",
-        "codestar-connections:UpdateConnection",
         "codestar-connections:DeleteConnection"
       ],
       "Resource": "*"
@@ -114,15 +112,17 @@
       "Sid": "ServiceCatalogOperations",
       "Effect": "Allow",
       "Action": [
-        "servicecatalog:ListProducts",
         "servicecatalog:DescribeProduct",
         "servicecatalog:SearchProducts",
         "servicecatalog:ProvisionProduct",
         "servicecatalog:DescribeProvisionedProduct",
         "servicecatalog:UpdateProvisionedProduct",
         "servicecatalog:TerminateProvisionedProduct",
-        "servicecatalog:ListProvisionedProducts",
-        "servicecatalog:ScanProvisionedProducts"
+        "servicecatalog:ScanProvisionedProducts",
+        "servicecatalog:ListProvisioningArtifacts",
+        "servicecatalog:DescribeProvisioningArtifact", 
+        "servicecatalog:ListPortfolios",
+        "servicecatalog:DescribePortfolio"  
       ],
       "Resource": "*"
     },
@@ -168,8 +168,7 @@
         "s3:CreateBucket",
         "s3:DeleteBucket",
         "s3:GetBucketVersioning",
-        "s3:PutBucketVersioning",
-        "s3:HeadBucket"
+        "s3:PutBucketVersioning"
       ],
       "Resource": [
         "arn:aws:s3:::sagemaker-*",

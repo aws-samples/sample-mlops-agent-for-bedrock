@@ -231,6 +231,10 @@ def create_code_connection(params: Dict[str, Any]) -> Dict[str, Any]:
                 {
                     'Key': 'Purpose',
                     'Value': 'MLOpsAutomation'
+                },
+                {
+                    'Key': 'sagemaker',
+                    'Value': 'true'
                 }
             ]
         )
@@ -705,6 +709,48 @@ def create_mlops_project(params: Dict[str, Any]) -> Dict[str, Any]:
         logger.info(f"SUCCESS: MLOps project {project_name} creation completed!")
         
         model_package_group_name = f"{project_name}-{project_id}"
+        
+        # STEP 5: Wait for pipeline to create model package group and tag it
+        logger.info("Step 5: Waiting for pipeline to create model package group and tagging it...")
+        
+        try:
+            # Get account ID and region for ARN construction
+            account_id = boto3.client('sts').get_caller_identity()['Account']
+            region = boto3.Session().region_name or 'us-east-1'
+            
+            max_wait_time = 600  # 10 minutes to wait for pipeline to create model package group
+            check_interval = 30  # Check every 30 seconds
+            elapsed_time = 0
+            
+            while elapsed_time < max_wait_time:
+                try:
+                    # Check if model package group exists
+                    sagemaker_client.describe_model_package_group(ModelPackageGroupName=model_package_group_name)
+                    
+                    # If we get here, the group exists - tag it
+                    model_group_arn = f"arn:aws:sagemaker:{region}:{account_id}:model-package-group/{model_package_group_name}"
+                    sagemaker_client.add_tags(
+                        ResourceArn=model_group_arn,
+                        Tags=[
+                            {'Key': 'CreatedBy', 'Value': 'MLOpsAgent'},
+                            {'Key': 'Project', 'Value': project_name},
+                            {'Key': 'ProjectId', 'Value': project_id}
+                        ]
+                    )
+                    logger.info(f"Successfully tagged model package group: {model_package_group_name}")
+                    break
+                    
+                except sagemaker_client.exceptions.ResourceNotFound:
+                    # Group doesn't exist yet, keep waiting
+                    logger.info(f"Model package group not created yet, waiting... (elapsed: {elapsed_time}s)")
+                    time.sleep(check_interval)
+                    elapsed_time += check_interval
+                    
+            if elapsed_time >= max_wait_time:
+                logger.warning(f"Model package group {model_package_group_name} was not created within {max_wait_time} seconds")
+                
+        except Exception as e:
+            logger.warning(f"Failed to tag model package group: {e}")
         
         return {
             'statusCode': 200,

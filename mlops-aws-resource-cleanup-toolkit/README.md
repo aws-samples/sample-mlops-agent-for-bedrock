@@ -6,6 +6,10 @@ A comprehensive set of bash scripts for managing and cleaning up AWS resources i
 
 This toolkit is designed with **safety-first principles** - it won't delete anything you don't want it to.
 
+Set the following environment variables to use the appropriate AWS Account and region:
+AWS_REGION=<region to deploy MLOps pipeline>
+AWS_PROFILE=<profile name in .aws/credentials>
+
 ### **🔍 Always Preview First:**
 ```bash
 # See exactly what would be cleaned up (nothing gets deleted)

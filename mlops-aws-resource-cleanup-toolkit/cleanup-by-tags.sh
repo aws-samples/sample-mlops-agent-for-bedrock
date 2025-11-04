@@ -76,7 +76,7 @@ check_aws_cli() {
     fi
     
     ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
-    REGION=$(aws configure get region || echo "us-east-1")
+    REGION=${AWS_REGION:-$(aws configure get region || echo "us-east-1")}
     
     echo "AWS Account: $ACCOUNT_ID"
     echo "AWS Region: $REGION"
@@ -267,12 +267,18 @@ cleanup_model_package_groups() {
     
     model_groups=$(aws sagemaker list-model-package-groups --query "ModelPackageGroupSummaryList[].ModelPackageGroupName" --output text 2>/dev/null || echo "")
     
+    echo "DEBUG: Found model groups: $model_groups"
+    
     if [[ -n "$model_groups" ]]; then
         for group in $model_groups; do
+            echo "DEBUG: Checking group: $group"
             # Check if group has our tags
             tags=$(aws sagemaker list-tags --resource-arn "arn:aws:sagemaker:$REGION:$ACCOUNT_ID:model-package-group/$group" --query "Tags[?Key=='$PROJECT_TAG_KEY' && Value=='$PROJECT_TAG_VALUE']" --output text 2>/dev/null || echo "")
             
+            echo "DEBUG: Tags for $group: '$tags'"
+            
             if [[ -n "$tags" ]]; then
+                echo "DEBUG: Group $group has matching tags, proceeding with deletion"
                 if [[ "$DRY_RUN" == "true" ]]; then
                     echo "Would delete model package group: $group"
                 else
@@ -280,6 +286,8 @@ cleanup_model_package_groups() {
                     
                     # First delete all model packages in the group
                     model_packages=$(aws sagemaker list-model-packages --model-package-group-name "$group" --query "ModelPackageSummaryList[].ModelPackageArn" --output text 2>/dev/null || echo "")
+                    echo "DEBUG: Model packages in $group: $model_packages"
+                    
                     if [[ -n "$model_packages" ]]; then
                         for package_arn in $model_packages; do
                             echo "  Deleting model package: $package_arn"
@@ -298,10 +306,12 @@ cleanup_model_package_groups() {
                         print_warning "Failed to delete model package group $group"
                     fi
                 fi
+            else
+                echo "DEBUG: Group $group does not have matching tags, skipping"
             fi
         done
     else
-        print_warning "No model package groups found"
+        print_warning "No Model Package Groups found"
     fi
 }
 
@@ -677,6 +687,36 @@ cleanup_sagemaker_buckets() {
     fi
 }
 
+# Function to cleanup CodeBuild Projects
+cleanup_codebuild_projects() {
+    print_step "15" "Cleaning up CodeBuild Projects"
+    
+    projects=$(aws codebuild list-projects --query "projects" --output text 2>/dev/null || echo "")
+    
+    if [[ -n "$projects" ]]; then
+        for project in $projects; do
+            # Check if project has our tags
+            tags=$(aws codebuild list-tags-for-resource --resource-arn "arn:aws:codebuild:$REGION:$ACCOUNT_ID:project/$project" --query "tags[?key=='$PROJECT_TAG_KEY' && value=='$PROJECT_TAG_VALUE']" --output text 2>/dev/null || echo "")
+            
+            if [[ -n "$tags" ]]; then
+                if confirm_resource_deletion "$project" "CodeBuild Project"; then
+                    if [[ "$DRY_RUN" == "true" ]]; then
+                        echo "Would delete CodeBuild project: $project"
+                    else
+                        echo "Deleting CodeBuild project: $project"
+                        aws codebuild delete-project --name "$project" 2>/dev/null || print_warning "Failed to delete CodeBuild project $project"
+                        print_success "Deleted CodeBuild project: $project"
+                    fi
+                else
+                    echo "Skipped CodeBuild project: $project"
+                fi
+            fi
+        done
+    else
+        print_warning "No CodeBuild projects found"
+    fi
+}
+
 # Function to cleanup CloudWatch Log Groups
 cleanup_cloudwatch_log_groups() {
     print_step "17" "Cleaning up CloudWatch Log Groups"
@@ -735,6 +775,7 @@ main() {
     cleanup_sagemaker_endpoints
     cleanup_sagemaker_endpoint_configs
     cleanup_codepipeline_pipelines
+    cleanup_codebuild_projects
     cleanup_codestar_connections
     cleanup_lambda_functions
     cleanup_cloudwatch_log_groups

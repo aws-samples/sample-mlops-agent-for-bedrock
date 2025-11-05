@@ -1,260 +1,260 @@
-# Building Gaming MLOps CI/CD with Amazon Bedrock Agents
+# Building Gaming MLOps pipelines with Amazon Bedrock Agents
 
-## Introduction
 
-In today's competitive gaming landscape, understanding and predicting player behavior is crucial for maintaining engagement and maximizing revenue. Player churn—when users stop playing a game—represents one of the most significant challenges facing game developers and publishers. Traditional approaches to building machine learning systems for churn prediction often require extensive DevOps expertise, manual pipeline configuration, and complex infrastructure management that can slow down innovation and time-to-market.
+**Building gaming MLOps pipelines with Amazon Bedrock Agents**
 
-Amazon SageMaker AI provides powerful MLOps capabilities, but orchestrating the complete CI/CD pipeline—from model development to production deployment—typically involves navigating multiple AWS services, managing intricate dependencies, and coordinating approval workflows. This complexity can create barriers for game studios or game analytics teams who want to focus on building great predictive models rather than wrestling with infrastructure.
+In today's competitive gaming landscape, machine learning (ML) has become essential for delivering personalized experiences, optimizing game mechanics, and driving business outcomes. However, traditional approaches to building and deploying ML systems often require extensive DevOps expertise, manual pipeline configuration, and complex infrastructure management that can slow down innovation and time-to-market. Game studios need agile, automated solutions that can rapidly iterate on ML models, while maintaining production reliability and scalability across diverse gaming use cases.
 
-This blog post demonstrates how to leverage Amazon Bedrock Agents to create an intelligent MLOps assistant that simplifies the entire CI/CD pipeline construction and management process. By combining the conversational capabilities of Amazon Bedrock with the robust MLOps features of Amazon SageMaker AI, we'll build a system that allows game teams to create, manage, and deploy player churn prediction models using natural language commands.
+**Amazon SageMaker AI and MLOps**
 
-Our solution addresses common pain points in gaming analytics:
+[Amazon SageMaker AI](https://aws.amazon.com/sagemaker/ai/) provides powerful MLOps capabilities. However, orchestrating the complete continuous integration and continuous delivery (CI/CD) pipeline—from model development to production deployment—typically involves navigating multiple Amazon Web Services (AWS) services. These include managing intricate dependencies, and coordinating approval workflows. This complexity can create barriers for game studios, or game analytics teams, who want to focus on building great predictive models rather than wrestling with infrastructure.
 
-- **Rapid experimentation**: Quickly spin up new churn prediction experiments without infrastructure overhead
-- **Automated workflows**: Streamline the path from model training to production deployment
-- **Approval management**: Handle staging-to-production approvals through conversational interfaces
-- **Multi-project coordination**: Manage multiple game titles and their respective churn models from a single interface
+We will demonstrate how to leverage [Amazon Bedrock Agents](https://aws.amazon.com/bedrock/agents/) to create an intelligent MLOps assistant that streamlines the entire CI/CD pipeline construction and management process. We will combine the conversational capabilities of [Amazon Bedrock](https://aws.amazon.com/bedrock/) with the robust MLOps features of Amazon SageMaker AI. With this solution game teams can create, manage, and deploy gaming prediction models using natural language commands.
 
-By the end of this walkthrough, you'll have a fully functional MLOps agent capable of managing complex machine learning workflows for gaming analytics, enabling your team to deploy player churn prediction systems with simple conversational commands like "Create a churn prediction pipeline for my mobile puzzle game" or "Approve the latest retention model for production deployment."
+Our solution addresses common pain points in gaming machine learning model build, train, and deploy pipelines:
 
-## Steps to Create the MLOps Management Agent
+- **Rapid experimentation:** Quickly spin up new prediction experiments without infrastructure overhead
+- **Automated workflows:** Streamline the path from model training to production deployment
+- **Approval management:** Handle model approvals through conversational interfaces
+- **Multi-project coordination:** Manage multiple game titles and their respective models from a single interface
 
-### Set Up the Foundation Infrastructure
+By the end of this walkthrough we will have created a fully functional MLOps agent, capable of managing complex machine learning workflows for gaming analytics. Your team can then deploy the gaming prediction solution with conversational commands such as, "Create a player churn CI/CD pipeline for my mobile puzzle game," or "Show status of build pipeline execution”.
 
-Before creating our Bedrock agent, we need to establish the core AWS infrastructure that will support our MLOps workflows.
+**Prerequisites**
 
-Create an `mlops-agent-role` that adds the managed `AWSLambdaBasicExecutionRole` permissions. Next, Add permissions with Create inline policy and create an `mlops-agent-policy`:
+Before starting you will need to make certain you have done or have the following:
 
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "bedrock:*",
-        "sagemaker:*",
-        "sagemaker-mlflow:*",
-        "codestar-connections:*",
-        "codeconnections:*",
-        "codepipeline:*",
-        "codebuild:*",
-        "servicecatalog:*",
-        "cloudformation:*",
-        "s3:*",
-        "iam:PassRole",
-        "iam:GetRole"
-      ],
-      "Resource": "*"
-    }
-  ]
-}
-```
+- A [Githu](https://github.com/)b account with remote access
+- The [AWS Command Line Interface](https://aws.amazon.com/cli/) installed
+- An [Amazon SageMaker AI domain and user](https://docs.aws.amazon.com/sagemaker/latest/dg/onboard-quick-start.html)
 
-After attaching the policy, add AWS Lambda and Amazon Bedrock trust relationships by selecting the Trust relationships tab and adding the following Trusted entities:
+**Create and configure an MLOps management agent**
 
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": [
-          "lambda.amazonaws.com",
-          "events.amazonaws.com",
-          "sagemaker.amazonaws.com"
-        ]
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-```
+**Set up the foundation infrastructure**
 
-### Set Up S3 Storage
+Before creating the Amazon Bedrock Agent, establish the core AWS infrastructure that will support the MLOps workflows.
 
-Create an S3 bucket to store ML artifacts, model outputs, and pipeline configurations:
+The infrastructure includes two AWS Identity and Access Management (IAM) roles:
 
-```bash
-aws s3 mb s3://game-ml-artifacts-$(aws sts get-caller-identity --query Account --output text)
-```
+- mlops-agent-role
+- lambda-agent-role
 
-### Create MLOps Lambda Function
+Trust relationships and policies for each role have been provided and referenced in the create role steps.
 
-The Lambda function serves as the backend engine for the Bedrock agent, handling all MLOps operations through an API. The Amazon Bedrock action group invocation calls the Lambda function using an action group schema that maps endpoints to actions.
+**Roles**
 
-To create the Lambda function, in the AWS Console:
+First, create an mlops-agent-role with attached inline policies to enable the Amazon Bedrock Agent to access required AWS services that support an MLOps pipeline.
 
-1. Select the Lambda service
-2. Toggle **Author from scratch**
-3. Enter a Function name such as `mlops-project-management`
-4. Choose a Python 3.1x Runtime
-5. Toggle x86_64 or arm64
-6. Change the default execution role to use the existing `mlops-agent-role` previously created
-7. Select **Create function**
+- Create an AWS IAM role, **mlops-agent-role **with Trusted entity type **AWS service** and Use case **Lambda**
+- Select** **the** Trust relationships** tab**, Edit** the **trust policy** and paste the **[trust relationship policy](https://github.com/aws-samples/sample-mlops-agent-for-bedrock/blob/main/mlops-agent-role-trust-relationship.json)** in the trusted entities editor
+- Add permissions with **Create inline policy** and paste the *[*mlops-agent-policy](https://github.com/aws-samples/sample-mlops-agent-for-bedrock/blob/main/mlops-agent-policy.json)** in the policy editor box
+- Create** **a second inline policy for AWS Lambda invocation access, and paste the **[lambda-invoke-access](https://github.com/aws-samples/sample-mlops-agent-for-bedrock/blob/main/lambda-invoke-access.json)** policy in the policy editor
+- Replace *ACCOUNT_ID* with your AWS account ID in the policy document
 
-Download the Lambda function zip file or clone the function from Github. Upload the zip file or copy and paste the function code into the Lambda code window.
+Next, create an IAM role that allows the AWS Lambda action invocation to access required AWS services.
 
-Select the **Configuration** tab for the function and **General configuration**. Choose **Edit** and update the function **Timeout** value to 15 minutes.
+- Create an IAM role called **lambda-agent-role **with Trusted entity type **AWS service** and use case **Lambda**
+- Search for the AWSLambdaBasicExecutionRole managed policy and add
+- Select** **the** Trust relationships** tab**, **Edit the **trust policy** and paste the **[trust relationship policy](https://github.com/aws-samples/sample-mlops-agent-for-bedrock/blob/main/lambda-agent-role-trust-relationship.json)** in the trusted entities editor
+- Next, add permissions with **Create inline policy** and add a **[lambda-agent-policy](https://github.com/aws-samples/sample-mlops-agent-for-bedrock/blob/main/lambda-tagging-policy.json)**
+
+**	**
+
+Add a policy to the AWS managed AmazonSageMakerServiceCatalogProductsLaunchRole**.**
+
+- Add permissions with Create inline policy and add [lambda-tagging-policy](https://github.com/aws-samples/sample-mlops-agent-for-bedrock/blob/main/lambda-tagging-policy.json)
+
+**MLOps AWS Lambda function **
+
+The AWS Lambda function serves as the backend engine for the Amazon Bedrock Agent, handling all MLOps operations through an API. The Amazon Bedrock action group invocation calls the AWS Lambda function using an action group schema that maps endpoints to actions.
+
+Use the following steps to create the AWS Lambda function:
+
+- In the console, select **AWS Lambda**
+- Select **Author from scratch**
+- Enter a *Function name*, we used: mlops-project-management
+- Choose a Python 3.1x Runtime
+- Select **x86_64**
+- Change the default execution role to **use the existing lambda-agent-role** previously created
+- Select** **the** Create function** button
+
+Figure 1 – Create AWS Lambda function
+
+- Download the AWS Lambda function file or clone the function from our [Github AWS Samples repository](https://github.com/aws-samples/sample-mlops-agent-for-bedrock/blob/main/mlops-project.py)
+- Copy and paste the function code into the Lambda code window
+
+Figure 2 – Add code to AWS Lambda function
+
+- Select the **Configuration** tab to access the function and General configuration** **
+- Choose** **the **Edit** button and update the function *Timeout* value to 15 minutes
+- On the **Configuration** tab, select Permissions and **Add permissions** for Resource-based policy statementsChoose **AWS Service**
+- For Service, select **other**
+- Statement ID: **bedrock-agent-invoke**
+- Principal: **bedrock.amazonaws.com**
+- Source ARN: **arn:aws:bedrock:&lt;region&gt;:&lt;accountid&gt;:agent/***
+- Action: **lambda:InvokeFunction** and **Save**
+
+- Deploy the function
+
+Figure 3 – Set AWS Lambda function timeout value
 
 The function is now ready to act as an Amazon Bedrock Agent and support the following actions:
 
-- `/configure-code-connection`: Sets up GitHub integration via AWS CodeStar Connections
-- `/create-mlops-project`: Creates SageMaker projects using Service Catalog templates
-- `/build-cicd-pipeline`: Orchestrates complete CI/CD pipeline construction
-- `/manage-model-approval`: Handles Model Registry approval workflows
-- `/manage-staging-approval`: Manages CodePipeline deployment approvals
-- `/list-mlops-templates`: Discovers available MLOps project templates
+- /configure-code-connection - Set up [AWS CodeConnections](https://docs.aws.amazon.com/codeconnections/latest/APIReference/Welcome.html) connection for GitHub integration
+- /create-mlops-project - Create a new SageMaker MLOps project with GitHub integration
+- /create-feature-store-group - Create SageMaker Feature Store Feature Group
+- /create-model-group - Create SageMaker Model Package Group
+- /create-mlflow-server - Create [Amazon SageMaker AI MLflow Tracking Server](https://docs.aws.amazon.com/sagemaker/latest/dg/mlflow.html)
+- /build-cicd-pipeline - Build CI/CD pipeline using seed code from GitHub
+- /manage-model-approval - Manage model package approval in Amazon SageMaker AI Model Registry
+- /manage-staging-approval - List models in staging ready for manual approval
+- /manage-project-lifecycle - Handle project updates and lifecycle management
+- /list-mlops-templates - List available MLOps [AWS Service Catalog](https://aws.amazon.com/servicecatalog/) templates
 
-In addition, the Lambda function automatically handles:
+In addition, the Lambda function automatically manages:
 
 - Repository seed code population from GitHub
-- Dynamic buildspec generation with project-specific parameters
+- Dynamic [AWS CodeBuild](https://aws.amazon.com/codebuild/) build script generation with project-specific parameters
 - Pipeline parameter injection and configuration
 - Multi-stage approval workflow management
 - Error handling and detailed logging for troubleshooting
 
-### Create the Amazon Bedrock MLOps Agent
+**Amazon Bedrock MLOps Agent**
 
-1. Navigate to the Amazon Bedrock console
-2. Select "Agents" from the left navigation panel under Build
-3. Click "Create Agent"
+Use the following steps to create the agent:
 
-Configure the agent with these settings:
+- In the console, Navigate to **Amazon Bedrock**
+- Select** Agents** from the left navigation panel under Build
+- Choose** Create Agent**
+- Configure the agent with these settings: Agent Name: *MLOpsOrchestrator*
+- Description: *Intelligent assistant for gaming MLOps CI/CD pipeline management*
+- Foundation Model: US Anthropic Claude 3.7 Sonnet
+- Use the existing service role, *mlops-agent-role* for the agent resource role
 
-- **Agent Name**: "MLOpsOrchestrator"
-- **Description**: "Intelligent assistant for gaming MLOps CI/CD pipeline management"
-- **Foundation Model**: US Anthropic Claude 3.7 Sonnet
-- Use existing service role, `mlops-agent-role` for Agent resource role
+- Configure the agent Instructions—provide instructions that establish the agent's identity and capabilities by using the following:
 
-### Configure Agent Instructions
-
-Provide instructions that establish the agent's identity and capabilities:
-
-```
 You are an expert MLOps engineer specializing in SageMaker pipeline orchestration. Help users create, manage, and deploy ML models through automated CI/CD pipelines. Always follow AWS best practices and provide clear status updates.
 
-Key Responsibilities:
-- Create and manage SageMaker MLOps projects for gaming analytics
-- Set up CI/CD pipelines for player churn prediction models
-- Manage model approval workflows from development to production
-- Provide guidance on gaming-specific ML best practices
-```
+Available actions include:
 
-### Configure Action Groups
+- Creating CodeConnections for GitHub integration
 
-#### Create the MLOps Action Group
+- Setting up MLOps projects and CI/CD pipelines
 
-In the Agent builder, under Action groups, select **Add**:
+- Managing feature stores and MLflow tracking
 
-- **Name**: "ProjetManagement"
-- **Description**: "Actions for managing SageMaker MLOps projects and GitHub integration"
-- **Action Group Type**: "Define with API schemas"
-- Select an existing Lambda function: `mlops-project-management`
+- Handling model and deployment approvals
 
-Under Action group schema, toggle **Define via in-line schema editor**. Download the MLOps agent OpenAPI schema from the GitHub aws-samples repository. Select JSON from the drop-down and paste the provided OpenAPI schema in the editor.
+Figure 4 – Create Amazon Bedrock Agent
 
-Choose **Save and exit**.
+**Amazon Bedrock Agent action groups**
 
-## Use the MLOps agent
+Use the following steps to create action groups:
 
-With agent created and configured, it's ready to use for launching AWS resources to support an MLOps CI/CD pipeline. As a foundation of the pipeline, an Amazon Service Catalog template defines AWS CodeBuild, AWS CodePipeline, SageMaker AI inference endpoints for staging and production. Creating an Amazon SageMaker AI project launches the resources with configuration specified with the MLOps agent.
+- In the Agent builder, under Action groups, Select** Add**Enter the group name: **ProjectManagement**
+- Enter the following description: **Actions for managing SageMaker MLOps projects and GitHub integration**
+- Select the Action group type: **Define with API schemas**
+- Under *Action group invocation*, make certain to select**: Select an existing Lambda function**
+- Under *Select Lambda function*, select **mlops-project-management**, with *Function version* as **$LATEST**
 
-Before creating an Amazon SageMaker AI MLOps with the AWS Service Catalog template, MLOps template for model building, training, and deployment with third-party Git repositories using CodePipeline, first create prerequisites such as an AWS CodeConnection to access GitHub, a managed MLflow tracking server and a feature store with sample player churn features. The Feature Store Group features are based on a synthetic player churn data set.
+Figure 5 – Configure Amazon Bedrock Agent action group
 
-The final prerequisite is required by the AWS Service Catalog template. Create two empty private repositories:
+- Under *Action group schema*, select** Define via in-line schema editor**
+- Download the **MLOps agent OpenAPI schema** from the [GitHub AWS Samples repository](https://github.com/aws-samples/sample-mlops-agent-for-bedrock/blob/main/mlops-schema.json)
+- Select** JSON** from the drop-down and paste the provided OpenAPI schema in the editor
+- Choose** Save and exit**
 
-- `player-churn-model-build`
-- `player-churn-model-deploy`
+Figure 6 – Create Amazon Bedrock Agent OpenAPI schema
 
-To use the agent, Select **Test and Prepare** in the Amazon Bedrock Agents console. Enter prompts to create resources using natural language.
+**Use the MLOps agent**
 
-### Use the agent to create a Feature Store group for game analytics
+With the agent created and configured, it’s ready to use for launching AWS resources to support an MLOps CI/CD pipeline. As a foundation of the pipeline, an AWS Service Catalog template defines AWS CodeBuild projects, AWS CodePipeline pipelines, and SageMaker AI inference endpoints for staging and production.
 
-```
+Creating an Amazon SageMaker AI project launches these resources with configuration specified with the MLOps agent. Before creating an Amazon SageMaker AI project with the AWS Service Catalog template, you'll need to set up several prerequisites.
+
+These prerequisites include:
+
+- An AWS CodeConnection to access GitHub
+- A managed MLflow tracking server
+- A feature store with sample features for the MLOps template that handles model building, training, and deployment with third-party Git repositoriesThe Feature Store Group features are based on a [synthetic player churn data set](https://github.com/aws-solutions-library-samples/guidance-for-predicting-player-behavior-with-ai-on-aws/blob/main/assets/examples/player-churn.csv)
+
+For the AWS Service Catalog template, create two empty private GitHub repositories:player-churn-model-buildplayer-churn-model-deployTo use the agent:
+
+- Select** Test and Prepare** in the Amazon Bedrock Agents console
+- Enter a prompt to create resources using natural languageStart with **what MLOps tasks can you perform?**
+- When using provided, example prompts, note created resources values and replace where appropriate
+
+Figure 7 – Show MLOps tasks
+
+- Use the agent to create a Feature Store group for gaming analytics by using the following prompt:
+
 Create Feature Store group named "player-churn-features" with feature description "player_id as string identifier, player_lifetime as number, player_churn as integer, time_of_day features as floats, cohort_id features as binary flags, event_time as event time feature" and description "Feature group for player churn prediction model containing player behavior and engagement metrics"
-```
 
-### Set-up a managed MLflow tracking server
+Figure 8 – Create a feature store
 
-```
-Create MLflow tracking server named "player-churn-tracking-server" with artifact store "s3://game-ml-artifacts/mlflow/" and size "Medium"
-```
+- Next, Create an Amazon SageMaker AI managed MLflow tracking server by entering the following prompt.  Use your account ID where indicated:
 
-### Establish GitHub integration
+Create MLflow tracking server named "player-churn-tracking-server" with artifact store "s3://game-ml-artifacts-ACCOUNT_ID/mlflow/" and size "Medium" and role_arn "arn:aws:iam::ACCOUNT_ID:role/mlops-agent-role"
 
-```
+Figure 9 – Create a MLflow tracking server
+
+- Use the following prompt to establish GitHub integration:
+
 Create an AWS CodeConnection called "mlops-github" for GitHub integration
-```
 
-### Create an MLOps CI/CD project
+Figure 10 – Create an AWS CodeConnection to Github
 
-```
-Create MLOps project named "mlops-player-churn" with GitHub username "your Github username", build repository "player-churn-model-build", deploy repository "player-churn-model-deploy", using connection ARN "your-connection-arn"
-```
+- To complete AWS CodeConnection setup, select the created connection in the AWS Console and choose **Update pending connection**.
+- Select **Install a new app**.
+- You will be redirected to GitHub to authenticate and select repository access.
+- Choose **Connect** and the connection status will change from **Pending** to **Available**.
 
-### Create an MLOps CI/CD Pipeline
+With supporting MLOps infrastructure created, navigate to the **MLOpsOrchestrator**
 
-```
-Build CI/CD pipeline for project "mlops-player-churn" with model build repository "gitUserName/player-churn-model-build", deploy repository "gitUserName/player-churn-model-deploy", connection ARN "your-connection-arn", feature group "player-churn-features", S3 bucket "game-ml-artifacts", MLflow server "your-mlflow-arn", and pipeline "player-churn-training-pipeline"
-```
+agent in the AWS console.
 
-To verify and visualize the pipeline, in the AWS console, navigate to AWS CodePipeline and select **Pipelines** in the left-hand navigation pane. There will be two pipelines: one for build and another for deploy. Select the link of the build project and a visual view show the pipeline steps.
+- Create an Amazon SageMaker AI MLOps project by using the following prompt:
 
-To trigger the CI/CD pipeline, push changed code to the model-build repository and the deploy part of the pipeline will automatically execute. Open a terminal window, change directories to Git `player-churn-model-build` folder and execute a commit:
+Create an MLOps project named "mlops-player-churn" with GitHub username "your Github username", build repository "player-churn-model-build", deploy repository "player-churn-model-deploy", using connection ARN "your connection arn"
 
-```bash
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
-git add -A
-git commit -am "customize project"
-git push
-```
+- The MLOps project creates and executes an Amazon SageMaker AI pipeline.  Copy the model package group name from the prompt response.  The pipeline execution adds a model to the Amazon SageMaker AI Model Registry in **Pending manual approval** status.  Approve the model by using the following prompt:
 
-The `git push` will launch the deploy step of the model building pipeline and launch two Amazon SageMaker AI inference endpoints: `DeployStaing` and `DeployProd`. Navigating to the AWS CodePipelines deploy pipeline will show the new pipeline steps.
+Approve model in model package group "your model package group name"
 
-Using an Amazon Bedrock Agent, a complete MLOps model build and deploy CI/CD pipeline has been created. Try out additional agent prompts to experiment with the flexibility and function of the agent.
+- Create an MLOps CI/CD Pipeline by using the following:
 
-Amazon SageMaker AI Canvas can be used to connect to data sources such as transactional databases, data warehouses, Amazon S3 or over 50 other data providers. Canvas can be used to feature engineer data and used as a data source for the MLOps model build and deploy pipeline.
+Build a CI/CD pipeline for project "mlops-player-churn" with model build repository "gitUserName/player-churn-model-build", deploy repository “gitUserName/player-churn-model-deploy”, connection ARN "your connection arn", feature group "player-churn-features", S3 bucket "game-ml-artifacts-ACCOUNT_ID", MLflow server "your-mlflow-arn", and pipeline "player-churn-training-pipeline"
 
-## Cleanup
+- To verify and visualize the pipeline, in the AWS console, navigate to *AWS CodePipeline*. Select** Pipelines** in the left-hand navigation pane.There will be two pipelines, one for build and another for deploy.
 
-To avoid ongoing charges, use the enhanced cleanup toolkit included in this repository. The toolkit uses smart resource tagging to safely identify and remove all MLOps deployed resources.
+Select the** link of the build project** to view pipeline steps.Figure 12 – Build pipeline
 
-**Safe cleanup process:**
-```bash
-# Navigate to the cleanup toolkit
-cd mlops-aws-resource-cleanup-toolkit
+- To deploy a production inference endpoint, navigate to the *AWS CodePipelines* deploy pipeline.Select ApproveDeployment in the DeployStaging box.
 
-# Make scripts executable
-chmod +x *.sh
+Figure 13 – Deploy pipeline
 
-# Preview what would be cleaned up (safe to run)
-./cleanup-by-tags.sh --dry-run
+- To trigger CI/CD pipeline execution, push any changed code to the *model-build repository*.
 
-# Clean up with confirmation prompts
-./cleanup-by-tags.sh --interactive
-```
+Using an Amazon Bedrock Agent, a complete MLOps model build and deployment of a CI/CD pipeline has been created. Try out additional agent prompts to experiment with the flexibility and function of the agent.
 
-The toolkit includes built-in safety features:
-- **Dry-run mode** to preview deletions
-- **Interactive confirmation** for each resource
-- **Automatic backups** of all resources before cleanup
-- **Resource counting** and validation
+[Amazon SageMaker Canvas](https://aws.amazon.com/sagemaker/ai/canvas/) can be used to connect to data sources (such as transactional databases, data warehouses, Amazon S3) or over 50 other data providers. SageMaker Canvas can be used to feature engineer data and as a data source for the MLOps model build and deploy pipeline.
 
-All MLOps resources tagged with `CreatedBy=MLOpsAgent` will be safely removed. See the [cleanup toolkit documentation](mlops-aws-resource-cleanup-toolkit/README.md) for more details.
+**Cleanup**
 
-## Conclusion
+To avoid ongoing charges, navigate to these [AWS services](https://github.com/aws-samples/sample-mlops-agent-for-bedrock/blob/main/mlops-aws-resource-cleanup-toolkit/RESOURCE_CLEANUP.md) in the console and terminate those resources.
 
-Building an intelligent MLOps CI/CD pipeline management system using Amazon Bedrock Agents represents a significant advancement in how gaming teams can approach machine learning operations. Throughout this walkthrough, we've demonstrated how to transform complex, multi-service MLOps workflows into simple, conversational interactions that dramatically reduce the barrier to entry for sophisticated gaming analytics.
+A command line automated [cleanup script](https://github.com/aws-samples/sample-mlops-agent-for-bedrock/blob/main/mlops-aws-resource-cleanup-toolkit/cleanup-by-tags.sh) is available to delete resources as well. The script uses resource tags to safely identify and remove all MLOps deployed resources. The script automatically removes all MLOps resources tagged with *CreatedBy=MLOpsAgent*. Run** cleanup-by-tags.sh** to terminate resources.
 
-## Further reading
+**Conclusion**
 
-- [MLOps Amazon SageMaker AI notebook samples](https://github.com/aws/amazon-sagemaker-examples)
+Building an intelligent MLOps CI/CD pipeline management system using Amazon Bedrock Agents represents an advancement in how gaming teams can approach machine learning operations. Throughout this walkthrough, we've demonstrated how to transform complex, multi-service MLOps workflows into streamlined, conversational interactions that reduce the barrier to entry for gaming analytics.
+
+Contact an [AWS Representative](https://pages.awscloud.com/Amazon-Game-Tech-Contact-Us.html) to know how we can help accelerate your business.
+
+**Further reading**
+
 - [Amazon SageMaker AI workflows](https://docs.aws.amazon.com/sagemaker/latest/dg/workflows.html)
-- [Amazon SageMaker Pipelines](https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html)
-- [Amazon SageMaker for MLOps](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects.html)
-- [Operationalize Machine Learning with Amazon SageMaker](https://aws.amazon.com/sagemaker/mlops/)
-- [MLOps and MLFlow workshop](https://catalog.workshops.aws/mlops-workshop)
-
+- [Amazon SageMaker Pipelines](https://aws.amazon.com/sagemaker/ai/pipelines/)
+- [Amazon SageMaker for MLOps](https://aws.amazon.com/sagemaker/ai/mlops/)
+- [MLOps Amazon SageMaker AI notebook samples](https://github.com/aws-samples/mlops-sagemaker-mlflow)
+- [Operationalize Machine Learning with Amazon SageMaker MLOps and MLFlow workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/b9405337-9690-4fb2-9f7d-76e6babb7a2c/en-US)
